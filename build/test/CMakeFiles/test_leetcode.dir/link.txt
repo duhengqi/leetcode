@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\test_leetcode.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\test_leetcode.dir/objects.a @CMakeFiles\test_leetcode.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -O3 -DNDEBUG -Wl,--whole-archive CMakeFiles\test_leetcode.dir/objects.a -Wl,--no-whole-archive -o D:\code\leetcode\bin\test_leetcode.exe -Wl,--out-implib,D:\code\leetcode\bin\libtest_leetcode.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\test_leetcode.dir\linkLibs.rsp

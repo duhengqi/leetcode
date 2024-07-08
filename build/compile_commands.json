@@ -1,0 +1,14 @@
+[
+{
+  "directory": "D:/code/leetcode/build/src",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/leetcode.dir/includes_CXX.rsp -O3 -DNDEBUG   -Wall -g -o CMakeFiles\\leetcode.dir\\leetcode.cpp.obj -c D:\\code\\leetcode\\src\\leetcode.cpp",
+  "file": "D:/code/leetcode/src/leetcode.cpp",
+  "output": "src/CMakeFiles/leetcode.dir/leetcode.cpp.obj"
+},
+{
+  "directory": "D:/code/leetcode/build/test",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/test_leetcode.dir/includes_CXX.rsp -O3 -DNDEBUG -o CMakeFiles\\test_leetcode.dir\\test_learnalgorithm.cpp.obj -c D:\\code\\leetcode\\test\\test_learnalgorithm.cpp",
+  "file": "D:/code/leetcode/test/test_learnalgorithm.cpp",
+  "output": "test/CMakeFiles/test_leetcode.dir/test_learnalgorithm.cpp.obj"
+}
+]
