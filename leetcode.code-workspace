@@ -1,0 +1,58 @@
+{
+	"folders": [
+		{
+			"name": "leetcode",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.defaultLanguage": "c",
+		"editor.formatOnType": true,
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+		"editor.acceptSuggestionOnEnter": "on",
+		"code-runner.runInTerminal": true,
+		"code-runner.executorMap": {
+			"c": "gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -O2 -m64 -lm -static-libgcc && &'./$fileNameWithoutExt.exe'"
+		},
+		"code-runner.saveFileBeforeRun": true,
+		"code-runner.preserveFocus": true,
+		"code-runner.clearPreviousOutput": false,
+		"code-runner.ignoreSelection": true,
+		"code-runner.fileDirectoryAsCwd": true,
+		"C_Cpp.clang_format_sortIncludes": true,
+		"files.associations": {
+			"stdio.h": "c",
+			"typeinfo.h": "c",
+			"stdlib.h": "c",
+			"string.h": "c",
+			"dfs.h": "c",
+			"string": "cpp",
+			"string_view": "cpp",
+			"*.tcc": "c",
+			"istream": "c",
+			"limits": "c",
+			"xlocale": "c",
+			"stdbool.h": "c",
+			"variant": "c",
+			"array": "c",
+			"memory": "c",
+			"functional": "c",
+			"tuple": "c",
+			"utility": "c",
+			"optional": "c",
+			"ostream": "c",
+			"system_error": "c",
+			"type_traits": "c",
+			"signal.h": "c",
+			"tool_utils.h": "c",
+			"yuv2rgb.h": "c",
+			"readnv12andconvertrgb.h": "c",
+			"read_dir_file.h": "c",
+			"parse_cfg_and_interactive.h": "c",
+			"xstring": "cpp",
+			"stack": "cpp",
+			"iostream": "cpp"
+		},
+		"cmake.configureOnOpen": false
+	}
+}
