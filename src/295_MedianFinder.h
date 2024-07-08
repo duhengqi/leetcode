@@ -8,122 +8,160 @@
 
 // @lc code=start
 
-class MedianFinder {
+class MedianFinder_multiset {
 public:
-    MedianFinder() {
+    MedianFinder_multiset() {}
 
+    void addNum(int num) {
+        int setSize = medianSet.size();
+        medianSet.insert(num);
+        // cout << setSize << endl;
+        if (setSize == 0) {
+            left = medianSet.begin();
+            right = medianSet.begin();
+        } else if (setSize%2 != 0) {
+            if (num >= *right) {
+                right++;
+            } else {
+                left--;
+            }
+        } else {
+            if (num >= *right) {
+                left = right;
+            } else if (num < *left) {
+                right = left;
+            } else {
+                left++;
+                right = left;
+            }
+        }
+        // cout << "left: "<< *left  << " right " << *right << endl;
+        setSize++;
     }
 
-    void addNum(int num) { medianSet.insert(num); }
-
     double findMedian() {
-        int size = medianSet.size();
-        // cout << "debug: size :" << size << endl;
-        if (size%2 != 0) {
-            // cout << "1debug: size :" << size << "size%2 "<< size%2<< endl;
-            auto iter = medianSet.begin();
-            advance(iter, size / 2);
-            return double(*iter);
-        } else {
-            // cout << "0debug: size :" << size << "size%2 "<< size%2<< endl;
-            auto iter1 = medianSet.begin();
-            auto iter2 = medianSet.begin();
-            advance(iter1, size / 2 - 1);
-            advance(iter2, size / 2);
-            return (double((*iter1)) + double((*iter2)))/2;
-        }
+            return ((*left) + (*right))/2.0;
+            // return (double((*left)) + double((*right)))/2;
     }
 
 private:
-    set<int> medianSet;
+    multiset<int> medianSet;
+    // int setSize = 0;
+    multiset<int>::iterator left;
+    multiset<int>::iterator right;
 };
-static void Problem_295_testcase1()
-{
-    /*["MedianFinder","addNum","addNum","findMedian","addNum","findMedian"] */
-    double result;
-    bool testResult = true;
-    MedianFinder medianfinder;
-    
+class MedianFinder {
+public:
+    MedianFinder() {}
 
-    medianfinder.addNum(1);
-    result = medianfinder.findMedian();
-
-    medianfinder.addNum(2);
-    result = medianfinder.findMedian();
-    if (result != double(1.5)) {
-        testResult = false;
+    void addNum(int num) {
+        int setSize = medianSet.size();
+        medianSet.insert(num);
+        // cout << setSize << endl;
+        if (setSize == 0) {
+            left = medianSet.begin();
+            right = medianSet.begin();
+        } else if (setSize%2 != 0) {
+            if (num >= *right) {
+                right++;
+            } else {
+                left--;
+            }
+        } else {
+            if (num >= *right) {
+                left = right;
+            } else if (num < *left) {
+                right = left;
+            } else {
+                left++;
+                right = left;
+            }
+        }
+        // cout << "left: "<< *left  << " right " << *right << endl;
+        setSize++;
     }
+
+    double findMedian() {
+            return ((*left) + (*right))/2.0;
+            // return (double((*left)) + double((*right)))/2;
+    }
+
+private:
+    multiset<int> medianSet;
+    // int setSize = 0;
+    multiset<int>::iterator left;
+    multiset<int>::iterator right;
+};
+TEST(test_problem_295, testcase3)
+{
+    MedianFinder medianfinder;
+
+    medianfinder.addNum(10);
+    EXPECT_EQ(medianfinder.findMedian(), double(10));
+
+    medianfinder.addNum(6);
+    EXPECT_EQ(medianfinder.findMedian(), double(8));
+
+    medianfinder.addNum(14);
+    EXPECT_EQ(medianfinder.findMedian(), double(10));
+
     // cout << result << endl;
+
+    medianfinder.addNum(18);
+    EXPECT_EQ(medianfinder.findMedian(), double(12));
+    // cout << result << endl;
+
+    medianfinder.addNum(12);
+    EXPECT_EQ(medianfinder.findMedian(), double(12));
+    // cout << result << endl;
+
+    medianfinder.addNum(15);
+    EXPECT_EQ(medianfinder.findMedian(), double(13));
 
     medianfinder.addNum(3);
-    result = medianfinder.findMedian();
-    // cout << result << endl;
-    if (result != double(2)) {
-        testResult = false;
-    }
+    EXPECT_EQ(medianfinder.findMedian(), double(12));
+    medianfinder.addNum(11);
+    EXPECT_EQ(medianfinder.findMedian(), double(11.5));
+    medianfinder.addNum(19);
+    EXPECT_EQ(medianfinder.findMedian(), double(12));
+}
 
-    if (testResult == false) {
-        cout << "TEST CASE1 FAILED" << endl;
-    } else {
-        cout << "TEST CASE1 PASSED" << endl;
-    }
+TEST(test_problem_295, testcase1)
+{
+    MedianFinder medianfinder;
+
+    medianfinder.addNum(1);
+    medianfinder.addNum(2);
+    EXPECT_EQ(medianfinder.findMedian(), double(1.5));
+
+    medianfinder.addNum(3);
+    EXPECT_EQ(medianfinder.findMedian(), double(2));
 
     return;
 }
-static void Problem_295_testcase2()
+
+TEST(test_problem_295, testcase2)
 {
-    double result;
-    bool testResult = true;
     MedianFinder medianfinder;
     medianfinder.addNum(6);
-    result = medianfinder.findMedian();
-    if (result != double(6)) {
-        testResult = false;
-        cout << __func__<<"() lines "<< __LINE__ <<" : wrong result : " << result << endl;
-    }
-
-    // cout << result << endl;
+    EXPECT_EQ(medianfinder.findMedian(), double(6));
 
     medianfinder.addNum(10);
-    result = medianfinder.findMedian();
-    if (result != double(8)) {
-        testResult = false;
-        cout << __func__<<"() lines "<< __LINE__ <<" : wrong result : " << result << endl;
-    }
+    EXPECT_EQ(medianfinder.findMedian(), double(8));
     // cout << result << endl;
 
     medianfinder.addNum(2);
-    result = medianfinder.findMedian();
-    if (result != double(6)) {
-        testResult = false;
-        cout << __func__<<"() lines "<< __LINE__ <<" : wrong result : " << result << endl;
-    }
+    EXPECT_EQ(medianfinder.findMedian(), double(6));
     // cout << result << endl;
 
     medianfinder.addNum(6);
-    result = medianfinder.findMedian();
-    if (result != double(6)) {
-        testResult = false;
-        cout << __func__<<"() lines "<< __LINE__ <<" : wrong result : " << result << endl;
-    }
+    EXPECT_EQ(medianfinder.findMedian(), double(6));
     // cout << result << endl;
 
     medianfinder.addNum(5);
-    result = medianfinder.findMedian();
-    if (result != double(6)) {
-        testResult = false;
-        cout << __func__<<"() lines "<< __LINE__ <<" : wrong result : " << result << endl;
-    }
+    EXPECT_EQ(medianfinder.findMedian(), double(6));
+}
 
-    print_test_result(testResult, __func__);
-    return;
-}
-static void Problem_295_test()
-{
-    Problem_295_testcase1();
-    Problem_295_testcase2();
-    return;
-}
 /**
  * Your MedianFinder object will be instantiated and called as such:
  * MedianFinder* obj = new MedianFinder();
