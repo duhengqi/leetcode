@@ -50,48 +50,48 @@ private:
     multiset<int>::iterator left;
     multiset<int>::iterator right;
 };
+
+struct MedianFinder295_cmp {
+    bool operator()(int a, int b) {return a > b;}
+};
+
 class MedianFinder {
 public:
     MedianFinder() {}
 
     void addNum(int num) {
-        int setSize = medianSet.size();
-        medianSet.insert(num);
-        // cout << setSize << endl;
-        if (setSize == 0) {
-            left = medianSet.begin();
-            right = medianSet.begin();
-        } else if (setSize%2 != 0) {
-            if (num >= *right) {
-                right++;
-            } else {
-                left--;
+        if (bigQ.empty()) {
+            bigQ.push(num);
+        } else if (num <= bigQ.top()){
+            bigQ.push(num);
+            if (bigQ.size() >= smallQ.size()+2) {
+                smallQ.push(bigQ.top());
+                bigQ.pop();
             }
         } else {
-            if (num >= *right) {
-                left = right;
-            } else if (num < *left) {
-                right = left;
-            } else {
-                left++;
-                right = left;
+            smallQ.push(num);
+            if (smallQ.size() >= bigQ.size()+2) {
+                bigQ.push(smallQ.top());
+                smallQ.pop();
             }
         }
-        // cout << "left: "<< *left  << " right " << *right << endl;
-        setSize++;
     }
 
     double findMedian() {
-            return ((*left) + (*right))/2.0;
-            // return (double((*left)) + double((*right)))/2;
+        if (bigQ.size() == smallQ.size()) {
+            return (smallQ.top() + bigQ.top()) / 2.0;
+        } else if (bigQ.size() > smallQ.size()) {
+            return (bigQ.top() + bigQ.top()) / 2.0;
+        } else if (bigQ.size() < smallQ.size()) {
+            return (smallQ.top() + smallQ.top()) / 2.0;
+        }
     }
 
 private:
-    multiset<int> medianSet;
-    // int setSize = 0;
-    multiset<int>::iterator left;
-    multiset<int>::iterator right;
+    priority_queue<int> bigQ;
+    priority_queue<int,vector<int>,MedianFinder295_cmp> smallQ;
 };
+
 TEST(test_problem_295, testcase3)
 {
     MedianFinder medianfinder;

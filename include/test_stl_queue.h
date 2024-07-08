@@ -10,7 +10,7 @@
 
 using namespace std;
 
-struct cmp {
+struct test_priority_queue_cmp {
     bool operator()(int a, int b) {
         /*
          The function call operator () can be overloaded for objects
@@ -27,8 +27,11 @@ struct cmp {
 
 void test_stl_priority_queue()
 {
-    // priority_queue<int> pq;
-    priority_queue<int, vector<int>, cmp> pq;
+    //默认优先级队列 大的在顶部，pop是取出最大值
+    // priority_queue<int> pq; 
+
+    //修改cmp，小的在顶部，pop是取出最小值
+    priority_queue<int, vector<int>, test_priority_queue_cmp> pq;
     pq.push(8);
     pq.push(10);
     pq.push(6);
