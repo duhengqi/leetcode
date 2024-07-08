@@ -14,7 +14,7 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+class Solution_237 {
 public:
     void deleteNode(ListNode* node) {
         ListNode *next = node->next;

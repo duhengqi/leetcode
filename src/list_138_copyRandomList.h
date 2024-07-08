@@ -21,7 +21,7 @@ public:
 };
 */
 
-class Solution {
+class Solution_138 {
 public:
     Node* copyRandomList(Node* head) {
         Node * nNode = nullptr;

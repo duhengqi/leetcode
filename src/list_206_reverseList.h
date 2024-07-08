@@ -16,7 +16,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution_206 {
 public:
     ListNode* reverseList(ListNode* head) {
         if (head == nullptr) {
