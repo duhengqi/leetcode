@@ -6,7 +6,7 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution_409 {
 public:
     int longestPalindrome(string s) {
         int dupNum = 0;
@@ -35,7 +35,7 @@ public:
 
 TEST(test_problem_409, testcase)
 {
-    Solution so;
+    Solution_409 so;
     EXPECT_EQ(so.longestPalindrome("abccccdd"), 7);
     EXPECT_EQ(so.longestPalindrome("a"), 1);
     EXPECT_EQ(so.longestPalindrome("ABCabc"), 1);
