@@ -14,7 +14,7 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+class Solution_160 {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         int Alen = 0;
@@ -52,7 +52,7 @@ public:
             longList = longList->next;
         }
         while (longList != nullptr) {
-            if (longList = shortList) {
+            if (longList == shortList) {
                 return longList;
             }
             longList = longList->next;

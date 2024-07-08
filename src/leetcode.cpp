@@ -11,7 +11,7 @@
 #include "hash_387_firstUniqChar.h"
 #include "hash_205_isIsomorphic.h"
 #include "hash_409_longestPalindrome.h"
-#include "dual_pointers_392_isSubsequence.h"
+#include "dual_pointers_167_twoSum.h"
 
 using namespace std;
 
@@ -20,7 +20,7 @@ int run_all_test(int* argc, char** argv)
     testing::InitGoogleTest(argc,argv);
     ::testing::InitGoogleTest(argc, argv);
     /* 测试指定用例 不执行用例可以加上DISABLE_ */
-    ::testing::GTEST_FLAG(filter) = "test_problem_392*";
+    ::testing::GTEST_FLAG(filter) = "test_problem_167*";
     /* 重复执行用例，可以上面的filter参数同时使用 */
     ::testing::GTEST_FLAG(repeat) = 1;
     /* 用例失败停止 1 开启，0关闭 */
