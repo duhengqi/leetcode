@@ -25,4 +25,18 @@ void print_test_result(bool result, const char* func)
 
 }
 
+bool is_vector_equal(vector<int>& numsA, vector<int>& numsB)
+{
+    if (numsA.size() != numsB.size()) {
+        return false;
+    }
+
+    for (int i = 0;i<numsA.size();i++){
+        if (numsA[i] != numsB[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 #endif
