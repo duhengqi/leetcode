@@ -26,9 +26,13 @@ using namespace std;
 void test_stl_array()
 {
     // 初始化
+    
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-variable"
     array<double, 10> values_not_init; // Not initialized 数组内容是不确定值
     array<double, 10> values_zeros {}; // 所有的元素初始化为 0 或者和默认元素类型等效的值：
     array<double, 10> values_init {0.5,1.0,1.5,2.0}; // 只初始化了前 4 个元素，剩余的元素都会被初始化为 0.0
+#pragma GCC diagnostic pop
 
     std::array<int, 4> values{};
     //初始化 values 容器为 {0,1,2,3}
