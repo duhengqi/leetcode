@@ -9,19 +9,8 @@
 #include <vector>
 #include <string>
 #include "gtest.h"
-#include "test_stl_multiset.h"
-#include "test_stl_queue.h"
-#include "test_stl_array.h"
-#include "test_stl_vector.h"
-#include "test_stl_multimap.h"
 #include "god.h"
-#include "queue_stack_295_MedianFinder.h"
-#include "hash_387_firstUniqChar.h"
-#include "hash_205_isIsomorphic.h"
-#include "hash_409_longestPalindrome.h"
-#include "dual_pointers_167_twoSum.h"
-#include "dual_pointers_151_reverseWords.h"
-#include "dual_pointers_15_threeSum.h"
+#include "dual_pointers_239_maxSlidingWindow.h"
 using namespace std;
 
 int run_all_test(int* argc, char** argv)
@@ -29,7 +18,7 @@ int run_all_test(int* argc, char** argv)
     testing::InitGoogleTest(argc,argv);
     ::testing::InitGoogleTest(argc, argv);
     /* 测试指定用例 不执行用例可以加上DISABLE_ */
-    ::testing::GTEST_FLAG(filter) = "test_problem_15.*";
+    ::testing::GTEST_FLAG(filter) = "test_problem_239.*";
     /* 重复执行用例，可以上面的filter参数同时使用 */
     ::testing::GTEST_FLAG(repeat) = 1;
     /* 用例失败停止 1 开启，0关闭 */
@@ -41,9 +30,7 @@ int run_all_test(int* argc, char** argv)
 
 int main(int argc, char **argv)
 {
-    test_stl_multimap();
-    test_stl_multimap_sort();
-    // (void)run_all_test(&argc, argv);
+    (void)run_all_test(&argc, argv);
 
     return 0;
 }
