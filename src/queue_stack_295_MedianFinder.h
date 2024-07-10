@@ -85,6 +85,7 @@ public:
         } else if (bigQ.size() < smallQ.size()) {
             return (smallQ.top() + smallQ.top()) / 2.0;
         }
+        return 0;
     }
 
 private:

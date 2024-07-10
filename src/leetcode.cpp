@@ -1,3 +1,8 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wchar-subscripts"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+
 #include <iostream>
 #include <list>
 #include <stack>
@@ -6,6 +11,9 @@
 #include "gtest.h"
 #include "test_stl_multiset.h"
 #include "test_stl_queue.h"
+#include "test_stl_array.h"
+#include "test_stl_vector.h"
+#include "test_stl_map.h"
 #include "god.h"
 #include "queue_stack_295_MedianFinder.h"
 #include "hash_387_firstUniqChar.h"
@@ -33,8 +41,9 @@ int run_all_test(int* argc, char** argv)
 
 int main(int argc, char **argv)
 {
-    // test_stl_priority_queue();
-    (void)run_all_test(&argc, argv);
+    test_stl_map_access();
+    // (void)run_all_test(&argc, argv);
 
     return 0;
 }
+#pragma GCC diagnostic pop
