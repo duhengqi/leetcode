@@ -1,5 +1,6 @@
 #include "god.h"
 #include <ctime>
+
 /*
  * @lc app=leetcode.cn id=239 lang=cpp
  *
@@ -7,85 +8,66 @@
  */
 
 // @lc code=start
-class Solution {
-public:
-    void updateBigestNum(vector<int>& nums, int index, int right, int &fBig, int &fBigIndex){
-        fBig = nums[index];
-        fBigIndex = index;
-        for (int i = index; i <= right;i++) {
-            if (nums[i] > fBig) {
-                fBig = nums[i];
-                fBigIndex = i;
-            }
-        }
-    }
-    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-        /** 边界条件/特殊情况
-         * 1， k >= nums
-         * 2,
-        */
-        if (nums.size() == 1 || k == 1) {
-            return nums;
-        }
 
-        int fBig = nums[0];
-        int fBigIndex = 0;
-        int sBig;
-        int sBigIndex = 0;
-        bool sFlag = false;
+/* 单调队列解法 */
+class Solution_239_monotonic_queues {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         vector<int> result;
+        deque<pair<int,int>> kDeque;
+
         int len = (k < nums.size() ? k : nums.size());
-        for (int i = 1; i < len; i++) {
-            if (fBig < nums[i]) {
-                fBig = nums[i];
-                fBigIndex = i;
-                sFlag = false;
-            } else if (sFlag == false || sBig < nums[i]) {
-                    sBig = nums[i];
-                    sBigIndex = i;
-                    sFlag = true;
+        for (int i = 0; i<len;i++) {
+            while(!kDeque.empty() && kDeque.back().first<nums[i]){
+                kDeque.pop_back();
             }
+            kDeque.push_back({nums[i],i});
         }
-        result.push_back(fBig);
-        if (nums.size() <= k) {
-            return result;
-        }
-        int left = 1;
-        int right = k;
-        while (right < nums.size()) {
-            if (fBigIndex == left-1) {
-                if (sBig < nums[right]) {
-                    fBig = nums[right];
-                    fBigIndex = right;
-                    sFlag = false;
-                } else {
-                    fBig = sBig;
-                    fBigIndex = sBigIndex;
-                    updateBigestNum(nums, sBigIndex+1, right, sBig, sBigIndex);
-                }
-            } else {
-                if (fBig < nums[right]) {
-                    fBig = nums[right];
-                    fBigIndex = right;
-                    sFlag = false;
-                } else if (sFlag == false || sBig < nums[right]) {
-                        sBig = nums[right];
-                        sBigIndex = right;
-                        sFlag = true;
-                }
+        result.push_back(kDeque.front().first);
+        for (int i = k; i<nums.size();i++) {
+            if (kDeque.front().second<=i-k) {
+                kDeque.pop_front();
             }
-            result.push_back(fBig);
-            left++;
-            right++;
+            while(!kDeque.empty() && kDeque.back().first<nums[i]){
+                kDeque.pop_back();
+            }
+            kDeque.push_back({nums[i],i});
+            result.push_back(kDeque.front().first);
         }
         return result;
     }
 };
+
+class Solution_239_priority_queue {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> result;
+        priority_queue<pair<int,int>> kQueue;
+    
+        int len = (k < nums.size() ? k : nums.size());
+        for (int i = 0; i<len;i++) {
+            kQueue.emplace(nums[i],i);
+        }
+
+        result.push_back(kQueue.top().first);
+
+        for(int i = k; i < nums.size(); i++) {
+            while(!kQueue.empty() && kQueue.top().second <= i - k) {
+                kQueue.pop();
+            }
+            kQueue.emplace(nums[i],i);
+            result.push_back(kQueue.top().first);
+        }
+
+        return result;
+    }
+};
+
 // @lc code=end
 
 TEST(test_problem_239, testcase1)
 {
-    Solution so;
+    Solution_239_priority_queue so;
     vector<int> testcase = {7,2,4};
     vector<int> result = so.maxSlidingWindow(testcase,2);
     vector<int> exceptResult = {7,4};
@@ -95,7 +77,7 @@ TEST(test_problem_239, testcase1)
 
 TEST(test_problem_239, testcase2)
 {
-    Solution so;
+    Solution_239_priority_queue so;
     vector<int> testcase = {1,3,-1,-3,5,3,6,7};
     vector<int> result = so.maxSlidingWindow(testcase,3);
     vector<int> exceptResult = {3,3,5,5,6,7};
@@ -105,7 +87,7 @@ TEST(test_problem_239, testcase2)
 
 TEST(test_problem_239, testcase3)
 {
-    Solution so;
+    Solution_239_priority_queue so;
     vector<int> testdata = {
     10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
     9999,  9999,  9999,  9998,  9998,  9998,  9998,  9998,  9998,  9998,  9998, 9998, 9998, 9997, 9997, 9997, 9997,

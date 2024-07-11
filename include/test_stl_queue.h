@@ -1,58 +1,33 @@
 #include <iostream>
 #include <queue>
+#include <list>
 
 using namespace std;
 
-struct test_priority_queue_cmp {
-    bool operator()(int a, int b) {
-        /*
-         The function call operator () can be overloaded for objects
-         of class type. When you overload ( ), you are not creating 
-         a new way to call a function.
-         Rather, you are creating an operator function that can be 
-         passed an arbitrary number of parameters.
-         priority_queue優先判定為!cmp，所以「由大排到小」需「反向」定義
-         實現「最小值優先」
-         */
-        return a > b;
-    }
-};
-
-void test_stl_priority_queue()
+void test_stl_queue()
 {
-    //默认优先级队列 大的在顶部，pop是取出最大值
-    // priority_queue<int> pq; 
+    /* 手动指定 queue 容器适配器底层采用的基础容器类型可以选择 deque 和 list。*/
+    queue<int, list<int>> values;
 
-    //修改cmp，小的在顶部，pop是取出最小值
-    priority_queue<int, vector<int>, test_priority_queue_cmp> pq;
-    pq.push(8);
-    pq.push(10);
-    pq.push(6);
-    pq.push(5);
-    while (!pq.empty()){
-        auto now = pq.top();
-        pq.pop();
-        cout << now << endl;
+
+   // 存储的元素类型以及底层采用的基础容器类型相同的queue来初始化另一个 queue 容器适配器
+    deque<int> values1{1,2,3};
+    queue<int> my_queue0(values1);
+    queue<int> my_queue1(my_queue0);
+    queue<int> my_queue2= my_queue1;
+
+
+   /* my_queue 底层采用的是deque容器，和values类型一致，且存储的也都是int类型元素 */ 
+    deque<int> values0{1,2,3};
+    queue<int> my_queue(values0);
+    my_queue.push(7);
+    my_queue.emplace(8);
+    cout << "size of my_queue: " << my_queue.size() << endl;
+    cout << "last of my_queue: " << my_queue.back() << endl;
+    while (!my_queue.empty())
+    {
+        cout << my_queue.front() << endl;
+        my_queue.pop();
     }
-}
 
-
-#define pii pair<int,int>
-#define F first
-#define S second
- 
-void test_stl_priority_queue2()
-{
-    priority_queue <pii> pq;
-    pq.push({4, 5});
-    pq.push({5, 3});
-    pq.push({4, 8});
-    pq.push({2, 7});
-    pq.push({3, 2});
- 
-    while (!pq.empty()){
-        auto now = pq.top();
-        pq.pop();
-        cout << now.F << " " << now.S << endl;
-    }
 }
