@@ -6,7 +6,7 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution_6 {
 public:
     string convert(string s, int numRows) {
         int row = 0;
@@ -45,14 +45,14 @@ public:
 
 TEST(test_problem_6, testcase1)
 {
-    Solution so;
+    Solution_6 so;
     string result = so.convert("PAYPALISHIRING",3);
     EXPECT_EQ(result,"PAHNAPLSIIGYIR");
 }
 
 TEST(test_problem_6, testcase2)
 {
-    Solution so;
+    Solution_6 so;
     string result = so.convert("PAYPALISHIRING",4);
     EXPECT_EQ(result,"PINALSIGYAHRPI");
 }

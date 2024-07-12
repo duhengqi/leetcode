@@ -7,7 +7,7 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution_415 {
 public:
     string addStrings(string num1, string num2) {
         int sum;
@@ -67,7 +67,7 @@ public:
 
 TEST(test_problem_415, testcase1)
 {
-    Solution so;
+    Solution_415 so;
     string strCase1Left = "11";
     string strCase1Right = "123";
     string result = so.addStrings(strCase1Left,strCase1Right);
@@ -78,7 +78,7 @@ TEST(test_problem_415, testcase1)
 
 TEST(test_problem_415, testcase2)
 {
-    Solution so;
+    Solution_415 so;
     string strCase1Left = "456";
     string strCase1Right = "77";
     string result = so.addStrings(strCase1Left,strCase1Right);
@@ -89,7 +89,7 @@ TEST(test_problem_415, testcase2)
 
 TEST(test_problem_415, testcase3)
 {
-    Solution so;
+    Solution_415 so;
     string strCase1Left = "0";
     string strCase1Right = "0";
     string result = so.addStrings(strCase1Left,strCase1Right);
@@ -100,7 +100,7 @@ TEST(test_problem_415, testcase3)
 
 TEST(test_problem_415, testcase4)
 {
-    Solution so;
+    Solution_415 so;
     string strCase1Left = "6";
     string strCase1Right = "501";
     string result = so.addStrings(strCase1Left,strCase1Right);
