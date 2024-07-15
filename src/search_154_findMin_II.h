@@ -8,7 +8,7 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution_154 {
 public:
     int findMin(vector<int>& nums) {
         int result = nums[0];
@@ -51,105 +51,105 @@ public:
 
 TEST(test_problem_154, testcaseI00)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {1,1,2,0,1,1,1,1,1,1};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcaseII0)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {0};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcaseII1)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {0,0};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcaseII2)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {2,0,0};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcaseII3)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {0,2,0};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcaseII4)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {0,1,1,1,1,1,1,2};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcaseII5)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {2,0,1,1,1,1,1,1};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcase0)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {0,1,2,3,4,5,6};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcase1)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {6,0,1,2,3,4,5};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcase2)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {5,6,0,1,2,3,4};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcase3)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {4,5,6,0,1,2,3};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcase4)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {3,4,5,6,0,1,2};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcase5)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {2,3,4,5,6,0,1};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcase6)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {1,2,3,4,5,6,0};
     EXPECT_EQ(so.findMin(nums), 0);
 }
 
 TEST(test_problem_154, testcase7)
 {
-    Solution so;
+    Solution_154 so;
     vector<int> nums = {2,0};
     EXPECT_EQ(so.findMin(nums), 0);
 }
