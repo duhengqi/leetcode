@@ -10,7 +10,7 @@
 /**
  * 循环链表
 */
-class Solution_287_bitmap {
+class Solution_287_dual_pointers {
 public:
     int findDuplicate(vector<int>& nums) {
         return 0;
@@ -91,42 +91,42 @@ public:
 
 TEST(test_problem_287, testcase0)
 {
-    Solution so;
+    Solution_287_binary_search so;
     vector<int> nums = {1,3,4,2,2};
     EXPECT_EQ(so.findDuplicate(nums), 2);
 }
 
 TEST(test_problem_287, testcase1)
 {
-    Solution so;
+    Solution_287_binary_search so;
     vector<int> nums = {3, 1, 3, 4, 2};
     EXPECT_EQ(so.findDuplicate(nums), 3);
 }
 
 TEST(test_problem_287, testcase2)
 {
-    Solution so;
+    Solution_287_binary_search so;
     vector<int> nums = {3,3,3,3,3};
     EXPECT_EQ(so.findDuplicate(nums), 3);
 }
 
 TEST(test_problem_287, testcase3)
 {
-    Solution so;
+    Solution_287_binary_search so;
     vector<int> nums = {1,3,4,2,2,5,6};
     EXPECT_EQ(so.findDuplicate(nums), 2);
 }
 
 TEST(test_problem_287, testcase4)
 {
-    Solution so;
+    Solution_287_binary_search so;
     vector<int> nums = {1,1,3,2,4,5};
     EXPECT_EQ(so.findDuplicate(nums), 1);
 }
 
 TEST(test_problem_287, testcase5)
 {
-    Solution so;
+    Solution_287_binary_search so;
     vector<int> nums = {1,3,4,5,6,2,1};
     EXPECT_EQ(so.findDuplicate(nums), 1);
 }

@@ -1,5 +1,5 @@
 #include "god.h"
-
+#include "leetcode_list.h"
 /*
  * @lc app=leetcode.cn id=142 lang=cpp
  *

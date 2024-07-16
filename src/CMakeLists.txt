@@ -4,6 +4,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/include/gtest
     ${PROJECT_SOURCE_DIR}/include/test_cpp_algorithm
     ${PROJECT_SOURCE_DIR}/include/test_stl
+    ${PROJECT_SOURCE_DIR}/include/leetcode
 )
 #设置链接库搜索目录
 link_directories(
