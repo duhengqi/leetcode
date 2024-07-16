@@ -20,7 +20,7 @@
  */
 class Solution {
 public:
-    vector<vector<int>> levelOrder(struct TreeNode* root) {
+    vector<vector<int>> levelOrder(TreeNode* root) {
 
     }
 };

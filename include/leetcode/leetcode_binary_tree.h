@@ -1,4 +1,4 @@
-#ifdef  _LEETCODE_BINARY_TREE_H_
+#ifndef  _LEETCODE_BINARY_TREE_H_
 #define _LEETCODE_BINARY_TREE_H_
 
 #include <iostream>
