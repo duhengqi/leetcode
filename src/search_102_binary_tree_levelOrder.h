@@ -1,4 +1,5 @@
 #include "god.h"
+#include "leetcode_binary_tree.h"
 /*
  * @lc app=leetcode.cn id=102 lang=cpp
  *
@@ -19,9 +20,8 @@
  */
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
+    vector<vector<int>> levelOrder(struct TreeNode* root) {
 
     }
 };
 // @lc code=end
-
