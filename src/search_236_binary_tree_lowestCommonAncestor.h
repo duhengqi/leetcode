@@ -11,8 +11,40 @@
 
 class Solution {
 public:
+    bool recursion(TreeNode* root, TreeNode* target, stack<TreeNode*>stk) {
+        if (root == NULL) {
+            return false;
+        }
+        if (root == target) {
+            stk.push(root);
+            return true;
+        }
+        if (recursion(root->left, target, stk)) {
+            stk.push(root);
+            return true;
+        }
+        if (recursion(root->right, target, stk)) {
+            stk.push(root);
+            return true;
+        }
+        return false;
+    }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        
+        stack<TreeNode*> pStk;
+        stack<TreeNode*> qStk;
+        recursion(root, p, pStk);
+        recursion(root, q, qStk);
+        TreeNode* before = pStk.top();
+        while (!pStk.empty() &&  !qStk.empty()) {
+            if (pStk.top() == qStk.top()) {
+                before = pStk.top();
+                pStk.pop();
+                qStk.pop();
+            } else {
+                return before;
+            }
+        }
+        return before;
     }
 };
 // @lc code=end
