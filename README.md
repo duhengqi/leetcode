@@ -37,8 +37,14 @@
 *  [验证栈序列](src\simulation_946_validateStackSequences.h)
 *  [旋转图像](src\simulation_48_rotate.h)
 *  [字符串转换整数(atoi)](src\simulation_8_myAtoi.h)
- 
 
+#### 栈与队列
+* [二叉树的前序遍历](src\binary_tree_144_preorderTraversal.h)
+* [二叉树的中序遍历](src\binary_tree_94_inorderTraversal.h)
+* [二叉树的后序遍历](src\binary_tree_145_postorderTraversal.h)
+
+#### 搜索
+* [二叉树的最近公共祖先](src\search_236_binary_tree_lowestCommonAncestor.h)
 
 
 #### STL

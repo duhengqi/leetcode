@@ -106,7 +106,11 @@
 			"thread": "cpp",
 			"cinttypes": "cpp",
 			"typeinfo": "cpp",
-			"ranges": "cpp"
+			"ranges": "cpp",
+			"xhash": "cpp",
+			"xlocinfo": "cpp",
+			"xtree": "cpp",
+			"xutility": "cpp"
 		},
 		"cmake.configureOnOpen": false
 	}
