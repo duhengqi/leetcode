@@ -15,16 +15,6 @@
 #include "gtest.h"
 using namespace std;
 
-void print_test_result(bool result, const char* func) 
-{
-    if (result == false) {
-        cout << func << " FAILED" << endl;
-    } else {
-        cout << func<< " PASSED" << endl;
-    }
-
-}
-
 bool is_vector_equal(vector<int>& numsA, vector<int>& numsB)
 {
     if (numsA.size() != numsB.size()) {
