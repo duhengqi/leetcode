@@ -7,7 +7,7 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution_8 {
 public:
     int myAtoi(string s) {
         /* positive number  negative number */
@@ -59,62 +59,62 @@ public:
 
 TEST(test_problem_8, testcase0)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("42"), 42);
 }
 
 
 TEST(test_problem_8, testcase1)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("-042"), -42);
 }
 
 TEST(test_problem_8, testcase2)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("1337c0d3"), 1337);
 }
 
 TEST(test_problem_8, testcase3)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("0-1"), 0);
 }
 
 TEST(test_problem_8, testcase4)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("words and 987"), 0);
 }
 
 /*int最大值 -2147483648~2147483647 */
 TEST(test_problem_8, testcase5)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("-112147483648"), -2147483648);
 }
 
 TEST(test_problem_8, testcase6)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("123212147483647"), 2147483647);
 }
 
 TEST(test_problem_8, testcase7)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("0042"), 42);
 }
 
 TEST(test_problem_8, testcase8)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi("  +0042"), 42);
 }
 
 TEST(test_problem_8, testcase9)
 {
-    Solution so;
+    Solution_8 so;
     EXPECT_EQ(so.myAtoi(" + 0042"), 0);
 }

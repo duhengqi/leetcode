@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_144_H
+#define _LEETCODE_NUMS_144_H
+
 #include "god.h"
 #include "leetcode_binary_tree.h"
 
@@ -66,3 +69,5 @@ TEST(test_problem_144, testcase0)
     EXPECT_EQ(result,exceptResult);
 
 }
+
+#endif /*_LEETCODE_NUMS_144_H*/

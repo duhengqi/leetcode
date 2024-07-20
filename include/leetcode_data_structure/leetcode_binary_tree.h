@@ -1,8 +1,9 @@
 #ifndef  _LEETCODE_BINARY_TREE_H_
-#define _LEETCODE_BINARY_TREE_H_
+#define  _LEETCODE_BINARY_TREE_H_
 
 #include <iostream>
 #include <vector>
+#include <queue>
 #include "gtest.h"
 
 using namespace std;

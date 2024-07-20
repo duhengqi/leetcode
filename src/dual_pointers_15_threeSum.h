@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_15_H
+#define _LEETCODE_NUMS_15_H
+
 #include "god.h"
 /*
  * @lc app=leetcode.cn id=15 lang=cpp
@@ -84,3 +87,5 @@ TEST(test_problem_15, testcase3)
     EXPECT_EQ(result.size(), 1);
     EXPECT_EQ(is_vector_equal(result[0],exceptResult), true);
 }
+
+#endif /*_LEETCODE_NUMS_15_H*/

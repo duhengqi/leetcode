@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_151_H
+#define _LEETCODE_NUMS_151_H
+
 #include "god.h"
 /*
  * @lc app=leetcode.cn id=151 lang=cpp
@@ -43,3 +46,4 @@ TEST(test_problem_151, testcase)
 }
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_151_H*/

@@ -1,3 +1,7 @@
+#ifndef _TEST_ALGORITHM_SORT_H_
+#define _TEST_ALGORITHM_SORT_H_
+
+
 #include <iostream>
 #include <algorithm>
 #include <list>
@@ -276,3 +280,5 @@ void test_algorithm_is_sorted_until()
     }
 
 }
+
+#endif /* _TEST_ALGORITHM_SORT_H_ */

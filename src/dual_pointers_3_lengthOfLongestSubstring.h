@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_3_H
+#define _LEETCODE_NUMS_3_H
+
 #include "god.h"
 
 /*
@@ -46,3 +49,5 @@ TEST(test_problem_3, testcase)
     EXPECT_EQ(so.lengthOfLongestSubstring("bbbbb"), 1);
     EXPECT_EQ(so.lengthOfLongestSubstring("pwwkew"), 3);
 }
+
+#endif /*_LEETCODE_NUMS_3_H*/

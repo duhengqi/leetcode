@@ -1,3 +1,6 @@
+#ifndef _TEST_STL_ARRAY_H_
+#define _TEST_STL_ARRAY_H_
+
 #include <iostream>
 #include <string>
 #include <array>
@@ -22,36 +25,40 @@ using namespace std;
  * 在 array<T,N> 类模板中，T 用于指明容器中的存储的具体数据类型，N 用于指明容器的大小。
  * 需要注意的是，这里的 N 必须是常量，不能用变量表示。
 */
+class test_stl_array {
+public:
+    void test_stl_array_init()
+    {
+        // 初始化
+        
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wunused-variable"
+        array<double, 10> values_not_init; // Not initialized 数组内容是不确定值
+        array<double, 10> values_zeros {}; // 所有的元素初始化为 0 或者和默认元素类型等效的值：
+        array<double, 10> values_init {0.5,1.0,1.5,2.0}; // 只初始化了前 4 个元素，剩余的元素都会被初始化为 0.0
+    #pragma GCC diagnostic pop
 
-void test_stl_array()
-{
-    // 初始化
-    
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-variable"
-    array<double, 10> values_not_init; // Not initialized 数组内容是不确定值
-    array<double, 10> values_zeros {}; // 所有的元素初始化为 0 或者和默认元素类型等效的值：
-    array<double, 10> values_init {0.5,1.0,1.5,2.0}; // 只初始化了前 4 个元素，剩余的元素都会被初始化为 0.0
-#pragma GCC diagnostic pop
-
-    std::array<int, 4> values{};
-    //初始化 values 容器为 {0,1,2,3}
-    for (unsigned i = 0; i < values.size(); i++) {
-        values.at(i) = i;
-    }
-    //get() 参数为 常量
-    cout << get<3>(values) << endl;
-
-    if (!values.empty()) {
-        for (auto val = values.begin(); val < values.end(); val++) {
-            cout << *val << " ";
+        std::array<int, 4> values{};
+        //初始化 values 容器为 {0,1,2,3}
+        for (unsigned i = 0; i < values.size(); i++) {
+            values.at(i) = i;
         }
-    }
-    cout << endl;
+        //get() 参数为 常量
+        cout << get<3>(values) << endl;
 
-    int total = 0;
-    for(auto&& value : values) {
-        total += value;
+        if (!values.empty()) {
+            for (auto val = values.begin(); val < values.end(); val++) {
+                cout << *val << " ";
+            }
+        }
+        cout << endl;
+
+        int total = 0;
+        for(auto&& value : values) {
+            total += value;
+        }
+        cout << total << endl;
     }
-    cout << total << endl;
-}
+};
+
+#endif /* _TEST_STL_ARRAY_H_ */

@@ -1,3 +1,6 @@
+#ifndef _TEST_ALGORITHM_FIND_H_
+#define _TEST_ALGORITHM_FIND_H_
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -14,22 +17,26 @@ using namespace std;
 * find() 函数的底层实现，其实就是用==运算符将 val 和 [first, last) 区域内的元素逐个进行比对。
 * 这也就意味着，[first, last) 区域内的元素必须支持==运算符
 */
+class test_algorithm_find {
+public:
+    void algorithm_find()
+    {
+        char stl[] ="I am studying cpp stl";
+        char * p = find(stl, stl + strlen(stl), 'c');
+        if (p != stl + strlen(stl)) {
+            cout << p << endl;
+        }
 
-void test_algorithm_find()
-{
-    char stl[] ="I am studying cpp stl";
-    char * p = find(stl, stl + strlen(stl), 'c');
-    if (p != stl + strlen(stl)) {
-        cout << p << endl;
+        std::vector<int> myvector{ 10,20,30,40,50 };
+        std::vector<int>::iterator it;
+        it = find(myvector.begin(), myvector.end(), 30);
+        if (it != myvector.end()) {
+            cout << "查找成功：" << *it;
+        } else {
+            cout << "查找失败";
+        }
+        cout << endl;
     }
+};
 
-    std::vector<int> myvector{ 10,20,30,40,50 };
-    std::vector<int>::iterator it;
-    it = find(myvector.begin(), myvector.end(), 30);
-    if (it != myvector.end()) {
-        cout << "查找成功：" << *it;
-    } else {
-        cout << "查找失败";
-    }
-    cout << endl;
-}
+#endif /* _TEST_ALGORITHM_FIND_H_ */

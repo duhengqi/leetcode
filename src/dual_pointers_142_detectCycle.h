@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_142_H
+#define _LEETCODE_NUMS_142_H
+
 #include "god.h"
 #include "leetcode_list.h"
 /*
@@ -56,3 +59,4 @@ public:
 };
 // @lc code=end
  
+#endif /*_LEETCODE_NUMS_142_H*/

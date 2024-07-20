@@ -1,3 +1,6 @@
+#ifndef _TEST_INSERTION_SORT_H_
+#define _TEST_INSERTION_SORT_H_
+
 #include <iostream>
 #include <vector>
 #include "gtest.h"
@@ -85,3 +88,5 @@ TEST(test_sort_inseartion_sort, testcase0)
     // cout << endl;
     EXPECT_EQ(is_sorted(nums.begin(),nums.end()),true);
 }
+
+#endif /* _TEST_INSERTION_SORT_H_ */
