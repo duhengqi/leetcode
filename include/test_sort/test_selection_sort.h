@@ -1,15 +1,19 @@
 #ifndef _TEST_SELECTION_SORT_H_
 #define _TEST_SELECTION_SORT_H_
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
+
 #include "gtest.h"
-#include <algorithm>
 using namespace std;
 
 /**
  * https://www.geeksforgeeks.org/selection-sort-algorithm-2/
  * https://www.geeksforgeeks.org/stable-selection-sort/
+ *
+ * leetcode 912 排序数组
+ * https://leetcode.cn/problems/sort-an-array/description/
  */
 
 /**
@@ -27,10 +31,10 @@ class test_selection_sort {
 public:
     void selection_sort(vector<int>& nums)
     {
-    for (int i = 0; i < nums.size() - 1;i++) {
+        for (int i = 0; i < nums.size() - 1; i++) {
             int smallest = nums[i];
             int min_index = i;
-            for (int j = i+1; j < nums.size();j++) {
+            for (int j = i + 1; j < nums.size(); j++) {
                 if (nums[j] < nums[min_index]) {
                     min_index = j;
                 }
@@ -42,15 +46,14 @@ public:
     }
 };
 
-
 TEST(test_sort_selection_sort, testcase0)
 {
     // {1,2,3,4,5,6,7,9};
-    vector<int> nums = {7,6,9,3,1,5,2,4,10};
+    vector<int> nums = {7, 6, 9, 3, 1, 5, 2, 4, 10};
     test_selection_sort so;
-    
+
     so.selection_sort(nums);
-    EXPECT_EQ(is_sorted(nums.begin(),nums.end()),true);
+    EXPECT_EQ(is_sorted(nums.begin(), nums.end()), true);
 }
 
 #endif /* _TEST_SELECTION_SORT_H_ */
