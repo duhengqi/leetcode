@@ -8,7 +8,7 @@
 
 // @lc code=start
 
-class Solution {
+class Solution_113 {
 public:
     void pathSumRecursive(TreeNode* root, int targetSum, vector<vector<int>>& result, vector<int> path, int sum)
     {

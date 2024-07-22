@@ -29,4 +29,18 @@ bool is_vector_equal(vector<int>& numsA, vector<int>& numsB)
     return true;
 }
 
+bool is_two_dim_vector_equal(vector<vector<int>>& numsA, vector<vector<int>>& numsB)
+{
+    if (numsA.size() != numsB.size()) {
+        return false;
+    }
+
+    for (int i = 0;i<numsA.size();i++){
+        if (is_vector_equal(numsA[i],numsB[i]) == false) {
+            return false;
+        }
+    }
+    return true;
+}
+
 #endif
