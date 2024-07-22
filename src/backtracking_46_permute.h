@@ -8,8 +8,30 @@
 // @lc code=start
 class Solution_46 {
 public:
+    void permuteRecursive(vector<vector<int>>& result, vector<int> nums, vector<int>items, int index)
+    {
+        if (index >= nums.size()) {
+            return;
+        }
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] == 0xFF) {
+                continue;
+            }
+            items[index] = nums[i];
+            if (index == nums.size()-1) {
+                result.push_back(items);
+                return;
+            }
+            nums[i] = 0xFF;
+            permuteRecursive(result, nums, items, index+1);
+            nums[i] = items[index];
+        }
+    }
     vector<vector<int>> permute(vector<int>& nums) {
-
+        vector<vector<int>> result;
+        vector<int> items(nums.size());
+        permuteRecursive(result, nums, items, 0);
+        return result;
     }
 };
 // @lc code=end
