@@ -9,7 +9,7 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution_15 {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         multiset<int> numsSet;
@@ -60,7 +60,7 @@ public:
 */
 TEST(test_problem_15, testcase1)
 {
-    Solution so;
+    Solution_15 so;
     vector<int> testcase = {-1,0,1,2,-1,-4};
     auto result = so.threeSum(testcase);
     for (int i = 0; i < result.size(); i++) {
@@ -71,7 +71,7 @@ TEST(test_problem_15, testcase1)
 }
 TEST(test_problem_15, testcase2)
 {
-    Solution so;
+    Solution_15 so;
     vector<int> testcase = {0,1,1};
     auto result = so.threeSum(testcase);
     EXPECT_EQ(result.size(), 0);
@@ -79,7 +79,7 @@ TEST(test_problem_15, testcase2)
 }
 TEST(test_problem_15, testcase3)
 {
-    Solution so;
+    Solution_15 so;
     vector<int> testcase = {0,0,0,0};
     auto result = so.threeSum(testcase);
     vector<int> exceptResult = {0,0,0};

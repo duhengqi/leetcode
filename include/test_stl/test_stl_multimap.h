@@ -49,6 +49,10 @@ public:
             cout << iter->first << " " << iter->second << endl;
         }
 
+        pair<multimap<string, string>::iterator, multimap<string, string>::iterator> ret = mymultimap.equal_range("keyB");
+        for (multimap<string, string>::iterator iter2 = ret.first; iter2 != ret.second;iter2++) {
+            cout << iter2->first << " " << iter2->second;
+        }
         /* 拷贝（复制）构造函数 和 mymultimap 完全一样的 newmultimap 容器。*/
         multimap<string, string>copymultimap(mymultimap);
 

@@ -51,6 +51,13 @@
 *  [数据流的中位数](src\queue_stack_295_MedianFinder.h)
 *  [滑动窗口最大值](src\dual_pointers_239_maxSlidingWindow.h)
 
+#### 排序
+*  [选择排序](include\test_sort\test_selection_sort.h)
+*  [冒泡排序](include\test_sort\test_bubble_sort.h)
+*  [插入排序](include\test_sort\test_insertion_sort.h)
+*  [希尔排序](include\test_sort\test_shell_sort.h)
+*  [快速排序](include\test_sort\test_quick_sort.h)
+*  [归并排序](include\test_sort\test_merge_sort.h)
 
 ### 待完成
 

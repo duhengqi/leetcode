@@ -9,7 +9,7 @@
 #include <vector>
 #include <string>
 #include "gtest.h"
-#include "test_merge_sort.h"
+#include "test_stl_multimap.h"
 #include "test_quick_sort.h"
 #include "search_207_canFinish.h"
 using namespace std;
@@ -33,11 +33,11 @@ int run_all_test(int* argc, char** argv)
 
 int main(int argc, char **argv)
 {
-    // test_algorithm_merge so;
-    // so.algorithm_inplace_merge();
+    test_stl_multimap so;
+    so.test_stl_multimap_init();
     // so.algorithm_merge();
 
-    (void)run_all_test(&argc, argv);
+    // (void)run_all_test(&argc, argv);
 
     return 0;
 }

@@ -4,10 +4,12 @@
  * @lc app=leetcode.cn id=207 lang=cpp
  *
  * [207] 课程表
+ * 前置课程可能会有多个
  */
 
 // @lc code=start
-class Solution {
+
+class Solution_207 {
 public:
     bool canFinishRecursive(int numCourses, vector<vector<int>>& prerequisites, set<int> relatedCourses, map<int,int>& courcesCanFinish){
         auto iter0 = courcesCanFinish.find(numCourses);
@@ -44,7 +46,7 @@ public:
 // @lc code=end
 TEST(test_problem_207, testcase2)
 {
-    Solution so;
+    Solution_207 so;
     vector<vector<int>> prerequisites = {
         {2,0},{1,0},{3,1},{3,2},{1,3}
     };
@@ -54,7 +56,7 @@ TEST(test_problem_207, testcase2)
 
 TEST(test_problem_207, testcase0)
 {
-    Solution so;
+    Solution_207 so;
     vector<vector<int>> prerequisites = {
         {1, 0},
         {0, 1}
@@ -65,7 +67,7 @@ TEST(test_problem_207, testcase0)
 
 TEST(test_problem_207, testcase1)
 {
-    Solution so;
+    Solution_207 so;
     vector<vector<int>> prerequisites = {
         {1, 0}
     };
