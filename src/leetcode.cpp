@@ -11,7 +11,7 @@
 #include "gtest.h"
 #include "test_stl_multimap.h"
 #include "test_quick_sort.h"
-#include "search_207_canFinish.h"
+#include "backtracking_39_combinationSum.h"
 using namespace std;
 
 int run_all_test(int* argc, char** argv)
@@ -19,7 +19,7 @@ int run_all_test(int* argc, char** argv)
     testing::InitGoogleTest(argc,argv);
     ::testing::InitGoogleTest(argc, argv);
     /* 测试指定用例 不执行用例可以加上DISABLE_ */
-    ::testing::GTEST_FLAG(filter) = "test_problem_207.*";
+    ::testing::GTEST_FLAG(filter) = "test_problem_39.*";
     // ::testing::GTEST_FLAG(filter) = "test_stl_priority_queue1.*";
     // ::testing::GTEST_FLAG(filter) = "test_sort_quick_sort.testcase5";
     /* 重复执行用例，可以上面的filter参数同时使用 */
@@ -33,11 +33,11 @@ int run_all_test(int* argc, char** argv)
 
 int main(int argc, char **argv)
 {
-    test_stl_multimap so;
-    so.test_stl_multimap_init();
+    // test_stl_multimap so;
+    // so.test_stl_multimap_init();
     // so.algorithm_merge();
 
-    // (void)run_all_test(&argc, argv);
+    (void)run_all_test(&argc, argv);
 
     return 0;
 }
