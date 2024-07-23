@@ -1,8 +1,11 @@
+#ifndef _LEETCODE_NUMS_160_GETINTERSECTIONNODE_H
+#define _LEETCODE_NUMS_160_GETINTERSECTIONNODE_H
+
 #include "god.h"
 #include "leetcode_list.h"
 /*
  * @lc app=leetcode.cn id=160 lang=cpp
- *
+ * https://leetcode.cn/problems/intersection-of-two-linked-lists/description/
  * [160] 相交链表
  */
 
@@ -64,3 +67,4 @@ public:
 };
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_160_GETINTERSECTIONNODE_H*/

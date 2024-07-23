@@ -1,12 +1,46 @@
+#ifndef _LEETCODE_NUMS_295_MEDIANFINDER_H
+#define _LEETCODE_NUMS_295_MEDIANFINDER_H
+
 #include "god.h"
 
 /*
  * @lc app=leetcode.cn id=295 lang=cpp
  *
  * [295] 数据流的中位数
+ * https://leetcode.cn/problems/find-median-from-data-stream
  */
 
 // @lc code=start
+
+class MedianFinder {
+public:
+    MedianFinder() {}
+
+    void addNum(int num) {
+        nums.push_back(num);
+        if(nums.size() == 1) {
+            return;
+        }
+        for (int j = nums.size()-1; j > 0; j--) {
+            if (nums[j] < nums[j - 1]) {
+                swap(nums[j], nums[j - 1]);
+            } else {
+                break;
+            }
+        }
+    }
+    
+    double findMedian() {
+        if(nums.size() %2 == 0) {
+            return (double(nums[nums.size() / 2 - 1]) + double(nums[nums.size() / 2]))/2;
+        } else {
+            return (double)nums[nums.size() / 2];
+        }
+    }
+private:
+    vector<int>nums;
+};
+
 
 class MedianFinder_multiset {
 public:
@@ -51,13 +85,10 @@ private:
     multiset<int>::iterator right;
 };
 
-struct MedianFinder295_cmp {
-    bool operator()(int a, int b) {return a > b;}
-};
-
-class MedianFinder {
+/* 转换成求 K大或者K小 */
+class MedianFinder_priority_queue {
 public:
-    MedianFinder() {}
+    MedianFinder_priority_queue() {}
 
     void addNum(int num) {
         if (bigQ.empty()) {
@@ -90,7 +121,7 @@ public:
 
 private:
     priority_queue<int> bigQ;
-    priority_queue<int,vector<int>,MedianFinder295_cmp> smallQ;
+    priority_queue<int,vector<int>,greater<int>> smallQ;
 };
 
 TEST(test_problem_295, testcase3)
@@ -171,3 +202,4 @@ TEST(test_problem_295, testcase2)
  */
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_295_MEDIANFINDER_H*/

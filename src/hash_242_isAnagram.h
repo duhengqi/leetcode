@@ -1,7 +1,10 @@
+#ifndef _LEETCODE_NUMS_242_ISANAGRAM_H
+#define _LEETCODE_NUMS_242_ISANAGRAM_H
+
 #include "god.h"
 /*
  * @lc app=leetcode.cn id=242 lang=cpp
- *
+ * https://leetcode.cn/problems/valid-anagram/description/
  * [242] 有效的字母异位词
  */
 
@@ -35,3 +38,4 @@ TEST(test_problem_242, testcase)
 }
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_242_ISANAGRAM_H*/

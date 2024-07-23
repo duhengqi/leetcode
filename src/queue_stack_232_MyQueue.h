@@ -1,7 +1,10 @@
+#ifndef _LEETCODE_NUMS_232_MYQUEUE_H
+#define _LEETCODE_NUMS_232_MYQUEUE_H
+
 #include "god.h"
 /*
  * @lc app=leetcode.cn id=232 lang=cpp
- *
+ * https://leetcode.cn/problems/implement-queue-using-stacks/description
  * [232] 用栈实现队列
  */
 
@@ -64,4 +67,4 @@ private:
  */
 // @lc code=end
 
-
+#endif /*_LEETCODE_NUMS_232_MYQUEUE_H*/

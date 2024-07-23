@@ -1,7 +1,13 @@
+#ifndef _LEETCODE_NUMS_138_COPYRANDOMLIST_H
+#define _LEETCODE_NUMS_138_COPYRANDOMLIST_H
+
+#include "god.h"
+#include "leetcode_list.h"
 /*
  * @lc app=leetcode.cn id=138 lang=cpp
  *
  * [138] 随机链表的复制
+ * https://leetcode.cn/problems/copy-list-with-random-pointer/description
  * 给你一个长度为 n 的链表，每个节点包含一个额外增加的随机指针 random ，该指针可以指向链表中的任何节点或空节点。
  * 
  * 构造这个链表的 深拷贝。 深拷贝应该正好由 n 个 全新 节点组成，其中每个新节点的值都设为其对应的原节点的值。
@@ -32,8 +38,6 @@
  */
 
 // @lc code=start
-/*
-// Definition for a Node.
 class Node {
 public:
     int val;
@@ -46,42 +50,41 @@ public:
         random = NULL;
     }
 };
-*/
 
 class Solution_138 {
 public:
     Node* copyRandomList(Node* head) {
-        Node * nNode = nullptr;
+        Node * oldList = nullptr;
         Node newListNode(0);
-        Node *nHead = nullptr;
+        Node *newList = nullptr;
         map<Node*,unsigned int> oMap;
         map<unsigned int,Node*> nMap;
 
-        nNode = head;
-        nHead = &newListNode;
+        oldList = head;
+        newList = &newListNode;
         unsigned int index = 0;
-        while (nNode!= nullptr){
-            nHead->next = new Node(nNode->val);
-            nHead = nHead->next;
-            // oMap[index] = nNode;
-            oMap.insert(make_pair(nNode,index));
-            nMap[index] = nHead;
+        while (oldList!= nullptr){
+            newList->next = new Node(oldList->val);
+            newList = newList->next;
+            // oMap[index] = oldList;
+            oMap.insert(make_pair(oldList,index));
+            nMap[index] = newList;
             index++;
     
-            nNode = nNode->next;
+            oldList = oldList->next;
         }
 
-        nNode = head;
-        nHead = newListNode.next;
-        while (nNode != nullptr) {
-            if (nNode->random != nullptr) {
-                map<Node*,unsigned int>::iterator iter = oMap.find(nNode->random);
+        oldList = head;
+        newList = newListNode.next;
+        while (oldList != nullptr) {
+            if (oldList->random != nullptr) {
+                map<Node*,unsigned int>::iterator iter = oMap.find(oldList->random);
                 if (iter != oMap.end()) {
-                    nHead->random = nMap[iter->second];
+                    newList->random = nMap[iter->second];
                 }
             }
-            nNode = nNode->next;
-            nHead = nHead->next;
+            oldList = oldList->next;
+            newList = newList->next;
         }
 
         return newListNode.next;
@@ -90,3 +93,4 @@ public:
 
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_138_COPYRANDOMLIST_H*/

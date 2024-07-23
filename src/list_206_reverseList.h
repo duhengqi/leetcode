@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_206_REVERSELIST_H
+#define _LEETCODE_NUMS_206_REVERSELIST_H
+
 #include "god.h"
 #include "leetcode_list.h"
 
@@ -5,6 +8,7 @@
  * @lc app=leetcode.cn id=206 lang=cpp
  *
  * [206] 反转链表
+ * https://leetcode.cn/problems/reverse-linked-list/description/
  */
 
 // @lc code=start
@@ -24,24 +28,19 @@ public:
         if (head == nullptr) {
             return nullptr;
         }
-        if (head->next == nullptr) {
-            return head;
-        }
-        ListNode *last = head;
+
+        ListNode *pre = head;
         ListNode *cur = head->next;
-        ListNode *next = cur->next;
-        last->next = nullptr;
+        pre->next = nullptr;
         while (cur != nullptr) {
-            cur->next = last;
-            if (next == nullptr) {
-                break;
-            }
-            last = cur;
+            ListNode* next = cur->next;
+            cur->next = pre;
+            pre = cur;
             cur = next;
-            next = next->next;
         }
-        return cur;
+        return pre;
     }
 };
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_206_REVERSELIST_H*/

@@ -1,9 +1,13 @@
+#ifndef _LEETCODE_NUMS_21_MERGETWOLISTS_H
+#define _LEETCODE_NUMS_21_MERGETWOLISTS_H
+
 #include "god.h"
 #include "leetcode_list.h"
 /*
  * @lc app=leetcode.cn id=21 lang=cpp
  *
  * [21] 合并两个有序链表
+ * https://leetcode.cn/problems/merge-two-sorted-lists/
  */
 
 // @lc code=start
@@ -21,17 +25,6 @@
 class Solution_21 {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-
-        if (list1 == NULL &&  list2 == NULL) {
-            return NULL;
-        }
-        if (list1 == NULL) {
-            return list2;
-        }
-        if (list2 == NULL) {
-            return list1;
-        }
-
         ListNode newnode = {};
         ListNode *nodePoint = &newnode;
         ListNode *L = list1;
@@ -58,3 +51,5 @@ public:
 };
 
 // @lc code=end
+
+#endif /*_LEETCODE_NUMS_21_MERGETWOLISTS_H*/

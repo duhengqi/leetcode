@@ -1,9 +1,13 @@
+#ifndef _LEETCODE_NUMS_387_FIRSTUNIQCHAR_H
+#define _LEETCODE_NUMS_387_FIRSTUNIQCHAR_H
+
 #include "god.h"
 
 /*
  * @lc app=leetcode.cn id=387 lang=cpp
  *
  * [387] 字符串中的第一个唯一字符
+ * https://leetcode.cn/problems/first-unique-character-in-a-string/
  */
 
 // @lc code=start
@@ -13,21 +17,13 @@ public:
 // -100 无效值表示超过1个字符
 // 大于0 表示 索引
     int firstUniqChar(string s) {
-        int table[64] = {-1};
-        for (int i = 0; i< 64;i++) {
-            table[i] = -1;
-        }
+        int table[64] = {0};
         for (int i = 0; i < s.size(); i++) {
-            if (table[s[i]-'a'+1] == -1) {
-                table[s[i]-'a'+1] = i;
-                
-            } else if (table[s[i]-'a'+1] >= 0){
-                table[s[i]-'a'+1] = -100;
-            }
+                table[s[i]-'a'] ++;
         }
-// 从字符串遍历，才能找到第一个，不能从数组遍历
+        // 从字符串遍历，才能找到第一个，不能从数组遍历
         for (int i = 0; i < s.size();i++) {
-            if (table[s[i]-'a'+1] >= 0) {
+            if (table[s[i]-'a'] == 1) {
                 return i;
             }
         }
@@ -45,3 +41,4 @@ TEST(test_problem_387, testcase)
 
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_387_FIRSTUNIQCHAR_H*/

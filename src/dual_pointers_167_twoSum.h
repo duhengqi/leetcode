@@ -1,8 +1,11 @@
+#ifndef _LEETCODE_NUMS_167_TWOSUM_H
+#define _LEETCODE_NUMS_167_TWOSUM_H
+
 #include "god.h"
 
 /*
  * @lc app=leetcode.cn id=167 lang=cpp
- *
+ * https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/
  * [167] 两数之和 II - 输入有序数组
  */
 
@@ -54,3 +57,4 @@ TEST(test_problem_167, testcase)
 }
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_167_TWOSUM_H*/

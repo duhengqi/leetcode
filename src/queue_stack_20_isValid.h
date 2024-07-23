@@ -1,9 +1,12 @@
+#ifndef _LEETCODE_NUMS_20_ISVALID_H
+#define _LEETCODE_NUMS_20_ISVALID_H
 
 #include "god.h"
 /*
  * @lc app=leetcode.cn id=20 lang=cpp
  *
  * [20] 有效的括号
+ * https://leetcode.cn/problems/valid-parentheses/description/
  */
 
 // @lc code=start
@@ -30,3 +33,4 @@ public:
 };
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_20_ISVALID_H*/

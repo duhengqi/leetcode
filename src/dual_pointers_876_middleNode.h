@@ -1,9 +1,12 @@
+#ifndef _LEETCODE_NUMS_876_MIDDLENODE_H
+#define _LEETCODE_NUMS_876_MIDDLENODE_H
+
 #include "god.h"
 #include "leetcode_list.h"
 
 /*
  * @lc app=leetcode.cn id=876 lang=cpp
- *
+ * https://leetcode.cn/problems/middle-of-the-linked-list/
  * [876] 链表的中间结点
  */
 
@@ -38,3 +41,4 @@ public:
 };
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_876_MIDDLENODE_H*/

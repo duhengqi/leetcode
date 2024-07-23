@@ -1,7 +1,10 @@
+#ifndef _LEETCODE_NUMS_205_ISISOMORPHIC_H
+#define _LEETCODE_NUMS_205_ISISOMORPHIC_H
+
 #include "god.h"
 /*
  * @lc app=leetcode.cn id=205 lang=cpp
- *
+ * https://leetcode.cn/problems/isomorphic-strings/description/
  * [205] 同构字符串
  */
 
@@ -39,3 +42,4 @@ TEST(test_problem_205, testcase)
 
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_205_ISISOMORPHIC_H*/

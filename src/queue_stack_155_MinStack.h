@@ -1,8 +1,12 @@
+#ifndef _LEETCODE_NUMS_155_MINSTACK_H
+#define _LEETCODE_NUMS_155_MINSTACK_H
+
 #include "god.h"
 /*
  * @lc app=leetcode.cn id=155 lang=cpp
  *
  * [155] 最小栈
+ * https://leetcode.cn/problems/min-stack
  */
 
 // @lc code=start
@@ -56,3 +60,4 @@ private:
  */
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_155_MINSTACK_H*/

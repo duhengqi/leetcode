@@ -1,8 +1,12 @@
+#ifndef _LEETCODE_NUMS_409_LONGESTPALINDROME_H
+#define _LEETCODE_NUMS_409_LONGESTPALINDROME_H
+
 #include "god.h"
 /*
  * @lc app=leetcode.cn id=409 lang=cpp
  *
  * [409] 最长回文串
+ * https://leetcode.cn/problems/longest-palindrome/
  */
 
 // @lc code=start
@@ -44,3 +48,4 @@ TEST(test_problem_409, testcase)
 }
 // @lc code=end
 
+#endif/*_LEETCODE_NUMS_409_LONGESTPALINDROME_H*/
