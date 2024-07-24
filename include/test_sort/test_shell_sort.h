@@ -1,5 +1,5 @@
-#ifndef _TEST_shell_sort_H_
-#define _TEST_shell_sort_H_
+#ifndef _TEST_SHELL_SORT_H_
+#define _TEST_SHELL_SORT_H_
 
 #include <algorithm>
 #include <iostream>
@@ -60,4 +60,4 @@ TEST(test_sort_shell_sort, testcase0)
     EXPECT_EQ(is_sorted(nums.begin(), nums.end()), true);
 }
 
-#endif /* _TEST_shell_sort_H_ */
+#endif /* _TEST_SHELL_SORT_H_ */

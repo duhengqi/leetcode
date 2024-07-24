@@ -12,6 +12,7 @@
 #include "test_stl_multimap.h"
 #include "test_quick_sort.h"
 #include "queue_stack_295_MedianFinder.h"
+#include "sort_220_containsNearbyAlmostDuplicate.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ int run_all_test(int* argc, char** argv)
     testing::InitGoogleTest(argc,argv);
     ::testing::InitGoogleTest(argc, argv);
     /* 测试指定用例 不执行用例可以加上DISABLE_ */
-    ::testing::GTEST_FLAG(filter) = "test_problem_295.*";
+    ::testing::GTEST_FLAG(filter) = "test_problem_220.*";
     // ::testing::GTEST_FLAG(filter) = "test_stl_priority_queue1.*";
     // ::testing::GTEST_FLAG(filter) = "test_sort_quick_sort.testcase5";
     /* 重复执行用例，可以上面的filter参数同时使用 */
