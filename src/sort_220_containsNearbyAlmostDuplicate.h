@@ -33,7 +33,7 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution_220 {
 public:
     bool containsNearbyAlmostDuplicate(vector<int>& nums, int indexDiff, int valueDiff) {
         int offset;
@@ -66,7 +66,7 @@ public:
 
 TEST(test_problem_220, testcase0)
 {
-    Solution so;
+    Solution_220 so;
     vector<int> nums={1,2,3,1};
     bool result = so.containsNearbyAlmostDuplicate(nums,3,0);
     EXPECT_EQ(result,true);
@@ -74,7 +74,7 @@ TEST(test_problem_220, testcase0)
 
 TEST(test_problem_220, testcase1)
 {
-    Solution so;
+    Solution_220 so;
     vector<int> nums={1,5,9,1,5,9};
     bool result = so.containsNearbyAlmostDuplicate(nums,2,3);
     EXPECT_EQ(result,false);

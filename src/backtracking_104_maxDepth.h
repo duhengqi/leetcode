@@ -1,3 +1,5 @@
+#ifndef _LEETCODE_NUMS_104_MAXDEPTH_H
+#define _LEETCODE_NUMS_104_MAXDEPTH_H
 
 #include "god.h"
 #include "leetcode_binary_tree.h"
@@ -27,3 +29,4 @@ public:
 
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_104_MAXDEPTH_H*/

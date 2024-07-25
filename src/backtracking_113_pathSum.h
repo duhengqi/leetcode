@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_113_PATHSUM_H
+#define _LEETCODE_NUMS_113_PATHSUM_H
+
 #include "god.h"
 #include "leetcode_binary_tree.h"
 /*
@@ -38,3 +41,4 @@ public:
 };
 // @lc code=end
 
+#endif /*_LEETCODE_NUMS_113_PATHSUM_H*/

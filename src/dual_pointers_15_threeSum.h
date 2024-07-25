@@ -1,5 +1,5 @@
-#ifndef _LEETCODE_NUMS_15_H
-#define _LEETCODE_NUMS_15_H
+#ifndef _LEETCODE_NUMS_15_THREESUM_H
+#define _LEETCODE_NUMS_15_THREESUM_H
 
 #include "god.h"
 /*
@@ -88,4 +88,4 @@ TEST(test_problem_15, testcase3)
     EXPECT_EQ(is_vector_equal(result[0],exceptResult), true);
 }
 
-#endif /*_LEETCODE_NUMS_15_H*/
+#endif /*_LEETCODE_NUMS_15_THREESUM_H*/

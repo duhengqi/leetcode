@@ -1,9 +1,26 @@
+#ifndef _LEETCODE_NUMS_47_PREMUTEUNIQUE_H
+#define _LEETCODE_NUMS_47_PREMUTEUNIQUE_H
+
 #include "god.h"
 
 /*
  * @lc app=leetcode.cn id=47 lang=cpp
  *
  * [47] 全排列 II
+ * 
+ * 给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。
+ * 
+ * 示例 1：
+ * 输入：nums = [1,1,2]
+ * 输出： [[1,1,2],  [1,2,1],  [2,1,1]]
+ * 
+ * 示例 2：
+ * 输入：nums = [1,2,3] 输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+ * 
+ * 提示：
+ * 1 <= nums.length <= 8
+ * -10 <= nums[i] <= 10
+ *
  */
 
 // @lc code=start
@@ -79,3 +96,5 @@ TEST(test_problem_47, testcase2)
 
     EXPECT_EQ(is_two_dim_vector_equal(result,exceptResult), true);
 }
+
+#endif /*_LEETCODE_NUMS_47_PREMUTEUNIQUE_H*/

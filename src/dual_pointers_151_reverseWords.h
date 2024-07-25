@@ -1,5 +1,5 @@
-#ifndef _LEETCODE_NUMS_151_H
-#define _LEETCODE_NUMS_151_H
+#ifndef _LEETCODE_NUMS_151_REVERSEWORDS_H
+#define _LEETCODE_NUMS_151_REVERSEWORDS_H
 
 #include "god.h"
 /*
@@ -46,4 +46,4 @@ TEST(test_problem_151, testcase)
 }
 // @lc code=end
 
-#endif /*_LEETCODE_NUMS_151_H*/
+#endif /*_LEETCODE_NUMS_151_REVERSEWORDS_H*/

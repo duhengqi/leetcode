@@ -1,5 +1,5 @@
-#ifndef _LEETCODE_NUMS_3_H
-#define _LEETCODE_NUMS_3_H
+#ifndef _LEETCODE_NUMS_3_LENGTH_OF_LONGEST_SUBSTRING__H
+#define _LEETCODE_NUMS_3_LENGTH_OF_LONGEST_SUBSTRING__H
 
 #include "god.h"
 
@@ -50,4 +50,4 @@ TEST(test_problem_3, testcase)
     EXPECT_EQ(so.lengthOfLongestSubstring("pwwkew"), 3);
 }
 
-#endif /*_LEETCODE_NUMS_3_H*/
+#endif /*_LEETCODE_NUMS_3_LENGTH_OF_LONGEST_SUBSTRING__H*/

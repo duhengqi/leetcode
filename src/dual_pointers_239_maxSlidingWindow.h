@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_239_MAXSLIDINGWINDOW_H
+#define _LEETCODE_NUMS_239_MAXSLIDINGWINDOW_H
+
 #include "god.h"
 #include <ctime>
 
@@ -5988,3 +5991,5 @@ TEST(test_problem_239, testcase3)
 
     // EXPECT_EQ(is_vector_equal(result,exceptResult), true);
 }
+
+#endif /**/

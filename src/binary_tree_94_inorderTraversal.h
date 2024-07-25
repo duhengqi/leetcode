@@ -1,5 +1,5 @@
-#ifndef _LEETCODE_NUMS_94_H
-#define _LEETCODE_NUMS_94_H
+#ifndef _LEETCODE_NUMS_94_INORDERTRAVERSAL_H
+#define _LEETCODE_NUMS_94_INORDERTRAVERSAL_H
 
 #include "god.h"
 #include "leetcode_binary_tree.h"
@@ -111,4 +111,4 @@ TEST(test_problem_94, testcase0)
 
 }
 
-#endif /*_LEETCODE_NUMS_94_H*/
+#endif /*_LEETCODE_NUMS_94_INORDERTRAVERSAL_H*/
