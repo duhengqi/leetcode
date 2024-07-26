@@ -5,7 +5,7 @@
 
 /*
  * @lc app=leetcode.cn id=220 lang=cpp
- *
+ * https://leetcode.cn/problems/contains-duplicate-iii/description/
  * [220] 存在重复元素 III
  * 给你一个整数数组 nums 和两个整数 indexDiff 和 valueDiff 。
  * 找出满足下述条件的下标对 (i, j)：
@@ -62,22 +62,45 @@ public:
         return false;
     }
 };
-// @lc code=end
 
-TEST(test_problem_220, testcase0)
-{
-    Solution_220 so;
-    vector<int> nums={1,2,3,1};
-    bool result = so.containsNearbyAlmostDuplicate(nums,3,0);
-    EXPECT_EQ(result,true);
-}
+class Solution_220_slide_window {
+public:
+    bool containsNearbyAlmostDuplicate(vector<int>& nums, int indexDiff, int valueDiff) {
+        set<int> record;
+        int k = 0;
+        for (int i = 0; i < nums.size();i++) {
+            auto iter = record.lower_bound(nums[i]-valueDiff);
+            if (iter != record.end()&&abs(*iter-nums[i])<=valueDiff) {
+                // cout << *iter << " " << i << k << nums[i] << endl;
+                return true;
+            }
+            record.emplace(nums[i]);
+            if (i-k >= indexDiff) {
+                record.erase(nums[k]);
+                k++;
+            }
+        }
+
+        return false;
+    }
+};
+
+// @lc code=end
 
 TEST(test_problem_220, testcase1)
 {
-    Solution_220 so;
+    Solution_220_slide_window so;
     vector<int> nums={1,5,9,1,5,9};
     bool result = so.containsNearbyAlmostDuplicate(nums,2,3);
     EXPECT_EQ(result,false);
+}
+
+TEST(test_problem_220, testcase0)
+{
+    Solution_220_slide_window so;
+    vector<int> nums={1,2,3,1};
+    bool result = so.containsNearbyAlmostDuplicate(nums,3,0);
+    EXPECT_EQ(result,true);
 }
 
 #endif /*_LEETCODE_NUMS_220_CONTAINSNEARBYALMOSTDUPLICATE_H*/

@@ -34,55 +34,35 @@
 
 // @lc code=start
 
-
 class Solution_79 {
 public:
-#define UP    0x1
-#define DOWN  0x2
-#define LEFT  0x4
-#define RIGHT 0x8
-    bool existRecursion(vector<vector<char>> board, string& word, int i, int j, int index,vector<vector<vector<int>>> & failRecord){
+    bool existRecursion(vector<vector<char>>& board, vector<vector<bool>> &visited, string& word, int i, int j, int index){
         if(index == word.size()) {
             return true;
         }
-
-        board[i][j] = 0xFF;
-        if (i - 1 >= 0 && board[i-1][j] == word[index]){
-            if (!(failRecord[i-1][j][index+1]&DOWN) && existRecursion(board, word, i-1, j, index+1,failRecord)) {
-                return true;
-            } else {
-                failRecord[i-1][j][index+1] |= DOWN;
-            }
+        visited[i][j] = true;
+        if (i - 1 >= 0 && board[i-1][j] == word[index] && visited[i-1][j] ==false && existRecursion(board, visited, word, i-1, j, index+1)) {
+            return true;
         }
-         if (i + 1 < board.size() && board[i+1][j] == word[index]){
-            if (!(failRecord[i+1][j][index+1]&UP) && existRecursion(board, word, i+1, j, index+1,failRecord)) {
-                return true;
-            } else {
-                failRecord[i+1][j][index+1] |= UP;
-            }
-         }
-         if (j - 1 >= 0 && board[i][j-1] == word[index]){
-            if (!(failRecord[i][j-1][index+1]&RIGHT) && existRecursion(board, word, i, j-1, index+1,failRecord)) {
-                return true;
-            } else {
-                failRecord[i][j-1][index+1] |= RIGHT;
-            }
-         }
-         if (j + 1 < board[i].size() && board[i][j+1] == word[index]) {
-            if (!(failRecord[i][j+1][index+1]&LEFT) && existRecursion(board, word, i, j+1, index+1,failRecord)) {
-                return true;
-            } else {
-                failRecord[i][j+1][index+1] |= LEFT;
-            }
-         }
+        
+        if (i + 1 < board.size() && board[i+1][j] == word[index] && visited[i+1][j]== false && existRecursion(board, visited, word, i+1, j, index+1)) {
+            return true;
+        }
+        if (j - 1 >= 0 && board[i][j-1] == word[index] && visited[i][j-1] == false && existRecursion(board, visited, word, i, j-1, index+1)) {
+            return true;
+        }
+        if (j + 1 < board[i].size() && board[i][j+1] == word[index] && visited[i][j+1] == false && existRecursion(board, visited, word, i, j+1, index+1)) {
+            return true;
+        }
+        visited[i][j] = false;
         return false;
     }
     bool exist(vector<vector<char>>& board, string word) {
-        vector<vector<vector<int>>> failRecord(board.size(), vector<vector<int>>(board[0].size(),vector<int>(word.size(),1)));
+        vector<vector<bool>> visited(board.size(),vector<bool>(board[0].size(),false));
         for (int i = 0; i < board.size();i++) {
             for (int j = 0; j < board[i].size();j++) {
                 if (board[i][j]==word[0]) {
-                    if (existRecursion(board, word, i,j,1,failRecord) == true) {
+                    if (existRecursion(board, visited, word, i,j,1) == true) {
                         return true;
                     }
 
@@ -92,9 +72,7 @@ public:
 
         return false;
     }
-
 };
-
 // @lc code=end
 
 TEST(test_problem_79, testcase4)
