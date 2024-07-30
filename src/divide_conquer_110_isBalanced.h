@@ -32,8 +32,33 @@
  */
 class Solution {
 public:
-    bool isBalanced(TreeNode* root) {
+    bool isBalancedRecursion(TreeNode* root, int& depth) {
+        if (root == nullptr) {
+            return true;
+        }
+        if (root->left == nullptr && root->right == nullptr) {
+            depth = 1;
+            return true;
+        } else {
+            int lDepth = 0;
+            int rDepth = 0;
+            if (isBalancedRecursion(root->left, lDepth) == false) {
+                return false;
+            }
+            if (isBalancedRecursion(root->right, rDepth) == false) {
+                return false;
+            }
+            depth = (lDepth > rDepth ? lDepth : rDepth)+1;
+            if (abs(rDepth-lDepth)<=1) {
+                return true;
+            }
+        }
 
+        return false;
+    }
+    bool isBalanced(TreeNode* root) {
+        int depth = 0;
+        return isBalancedRecursion(root, depth);
     }
 };
 // @lc code=end
