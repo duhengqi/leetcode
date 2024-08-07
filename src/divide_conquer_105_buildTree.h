@@ -13,7 +13,7 @@
  * 示例 1:
  * 输入: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
  * 输出: [3,9,20,null,null,15,7]
- * 
+ *
  * 示例 2:
  * 输入: preorder = [-1], inorder = [-1]
  * 输出: [-1]
@@ -32,10 +32,11 @@
 
 class Solution_105 {
 public:
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder)
+    {
         int preIndex = 0;
         int inIndex = 0;
-        bool isBackNode = false;
+        bool isRightNode = false;
         map<int, TreeNode*> mapNode;
         map<int, TreeNode*>::iterator iter;
 
@@ -44,39 +45,43 @@ public:
         mapNode[preorder[0]] = Root;
         TreeNode* curTreeRoot = Root;
         preIndex++;
-    
-        while (inIndex < inorder.size()) {
+
+        while (inIndex < inorder.size() && preIndex < preorder.size()) {
             iter = mapNode.find(inorder[inIndex]);
-            if (iter != mapNode.end()) {
+            if (iter == mapNode.end()) {
                 while (preorder[preIndex] != inorder[inIndex]) {
                     TreeNode* node = new TreeNode;
                     node->val = preorder[preIndex];
-                    if (isBackNode) {
+                    mapNode[node->val] = node;
+                    if (isRightNode) {
                         curTreeRoot->right = node;
-                        isBackNode = false;
+                        isRightNode = false;
                     } else {
                         curTreeRoot->left = node;
                     }
                     curTreeRoot = node;
                     preIndex++;
-
                 }
                 TreeNode* node = new TreeNode;
                 node->val = preorder[preIndex];
-                if (isBackNode) {
+                mapNode[node->val] = node;
+                if (isRightNode) {
                     curTreeRoot->right = node;
-                    isBackNode = false;
+                    isRightNode = false;
                 } else {
                     curTreeRoot->left = node;
                 }
                 curTreeRoot = node;
                 preIndex++;
-
                 inIndex++;
+                if (inIndex < inorder.size() && preIndex < preorder.size() && preorder[preIndex] == preorder[preIndex])
+                {
+                    isRightNode = true;
+                }
             } else {
                 curTreeRoot = iter->second;
                 inIndex++;
-                isBackNode = true;
+                isRightNode = true;
             }
         }
         return Root;
@@ -85,29 +90,45 @@ public:
 
 class Solution_105_recursion {
 public:
-    TreeNode* buildTreeRecursion(vector<int>& preorder, int pStart, int pEnd, vector<int>& inorder, int iStart, int iEnd) {
-        if(pEnd < pStart) {
+    TreeNode* buildTreeRecursion(vector<int>& preorder, int pStart, int pEnd, vector<int>& inorder, int iStart,
+                                 int iEnd)
+    {
+        if (pEnd < pStart) {
             return nullptr;
         }
-        TreeNode *root = new (TreeNode);
+        TreeNode* root = new (TreeNode);
         root->val = preorder[pStart];
         int len = 0;
         for (int i = iStart; i <= iEnd; i++, len++) {
             if (inorder[i] == preorder[pStart]) {
-                root->left = buildTreeRecursion(preorder, pStart+1, pStart+len, inorder, iStart, i-1);
-                root->right = buildTreeRecursion(preorder, pStart+1+len, pEnd, inorder, i+1, iEnd);
+                root->left = buildTreeRecursion(preorder, pStart + 1, pStart + len, inorder, iStart, i - 1);
+                root->right = buildTreeRecursion(preorder, pStart + 1 + len, pEnd, inorder, i + 1, iEnd);
             }
         }
         return root;
     }
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder)
+    {
         int pStart = 0;
-        int pEnd = preorder.size()-1;
+        int pEnd = preorder.size() - 1;
         int iStart = 0;
-        int iEnd = inorder.size()-1;
+        int iEnd = inorder.size() - 1;
         return buildTreeRecursion(preorder, pStart, pEnd, inorder, iStart, iEnd);
     }
 };
+
 // @lc code=end
+
+TEST(test_problem_105, testcase0)
+{
+    Solution_105 so;
+
+    vector<int> preOrder = {3, 9, 20, 15, 7};
+    vector<int> inOrder = {9, 3, 15, 20, 7};
+    TreeNode* root = so.buildTree(preOrder, inOrder);
+    // EXPECT_EQ(?, 12);
+    return;
+}
 
 #endif /*_LEETCODE_NUMS_105_BUILD_TREE_H*/
