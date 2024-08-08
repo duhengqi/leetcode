@@ -49,7 +49,7 @@ public:
         while (inIndex < inorder.size() && preIndex < preorder.size()) {
             iter = mapNode.find(inorder[inIndex]);
             if (iter == mapNode.end()) {
-                while (preorder[preIndex] != inorder[inIndex]) {
+                while (preIndex < preorder.size()) {
                     TreeNode* node = new TreeNode;
                     node->val = preorder[preIndex];
                     mapNode[node->val] = node;
@@ -60,29 +60,17 @@ public:
                         curTreeRoot->left = node;
                     }
                     curTreeRoot = node;
+                    if (preorder[preIndex] == inorder[inIndex]) {
+                        preIndex++;
+                        break;
+                    }
                     preIndex++;
-                }
-                TreeNode* node = new TreeNode;
-                node->val = preorder[preIndex];
-                mapNode[node->val] = node;
-                if (isRightNode) {
-                    curTreeRoot->right = node;
-                    isRightNode = false;
-                } else {
-                    curTreeRoot->left = node;
-                }
-                curTreeRoot = node;
-                preIndex++;
-                inIndex++;
-                if (inIndex < inorder.size() && preIndex < preorder.size() && preorder[preIndex] == preorder[preIndex])
-                {
-                    isRightNode = true;
                 }
             } else {
                 curTreeRoot = iter->second;
-                inIndex++;
-                isRightNode = true;
             }
+            inIndex++;
+            isRightNode = true;
         }
         return Root;
     }
