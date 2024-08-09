@@ -43,7 +43,7 @@ public:
         queue<TreeNode*> queL;
         queL.push(root);
         result += to_string(root->val);
-        result += " L";
+        result += ",";
         int levelIndex;
         while(!queL.empty()) {
             string str;
@@ -54,23 +54,22 @@ public:
                 if (node->left) {
                     queL.push(node->left);
                     str += to_string(node->left->val);
-                    str += " ";
+                    str += ",";
 
                 } else {
-                    str += "N ";
+                    str += "null,";
                 }
                 if (node->right) {
                     queL.push(node->right);
                     str += to_string(node->right->val);
-                    str += " ";
+                    str += ",";
                 } else {
-                    str += "N ";
+                    str += "null,";
                 }
                 levelIndex--;
             }
             if (!str.empty()) {
                 result += str;
-                result += "L";
             }
         }
         return;
@@ -86,21 +85,21 @@ public:
 
     void CodecBuildNode(TreeNode* &node, string &str, string::size_type &start)
     {
-        if(str[start] == 'N') {
+        if(str[start] == 'n') {
             node->left = NULL;
-            start += 2;
+            start += 5;
         } else {
-            string::size_type posTmp = str.find(" ", start);
+            string::size_type posTmp = str.find(",", start);
             node->left = new TreeNode;
             node->left->val = atoi(str.substr(start, posTmp - start).c_str());
             start = posTmp + 1;
         }
 
-        if(str[start] == 'N') {
+        if(str[start] == 'n') {
             node->right = NULL;
-            start += 2;
+            start += 5;
         } else {
-            string::size_type posTmp = str.find(" ", start);
+            string::size_type posTmp = str.find(",", start);
             node->right = new TreeNode;
             node->right->val = atoi(str.substr(start, posTmp - start).c_str());
             start = posTmp + 1;
@@ -115,7 +114,7 @@ public:
         TreeNode* root = new TreeNode;
         queue<TreeNode*> que;
         string::size_type start, end;
-        string c = "L";
+        string c = ",";
         end = str.find(c);
         cout <<"end pos: "<< end << endl;
         start = 0;
@@ -123,31 +122,19 @@ public:
         cout <<"root->val"<< root->val << endl;
         start = end + c.size();
         que.emplace(root);
-        int levelIndex;
 
-        while(!que.empty()) {
-            levelIndex = que.size();
-            end = str.find(c, start);
-            cout <<"end pos: "<< end << endl;
-            while(levelIndex) {
-                TreeNode* node = que.front();
-                que.pop();
+        while(!que.empty() && start < str.size()) {
+            TreeNode* node = que.front();
+            que.pop();
 
-                CodecBuildNode(node, str, start);
-                if (start > end) {
-                    cout << "build node error" << endl;
-                    break;
-                }
+            CodecBuildNode(node, str, start);
 
-                if (node->left) {
-                    que.push(node->left);
-                }
-                if (node->right) {
-                    que.push(node->right);
-                }
-                levelIndex--;
+            if (node->left) {
+                que.push(node->left);
             }
-            start = end + c.size();
+            if (node->right) {
+                que.push(node->right);
+            }
         }
 
         return root;

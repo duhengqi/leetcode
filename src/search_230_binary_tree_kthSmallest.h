@@ -42,7 +42,8 @@ TEST(test_problem_230, testcase0)
 {
     Solution_230_recurison so;
     vector<int> nums = {3, 9, 20, NODE_NULL, NODE_NULL, 15, 7};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     int result = so.kthSmallest(root,3);
     // EXPECT_EQ(result[0],exceptResult[0]);
 

@@ -63,7 +63,8 @@ TEST(test_problem_144, testcase0)
 {
     Solution_144_loop_stack so;
     vector<int> nums = {0,1,2,3,4,5,6,7,8,9,10};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<int> result = so.preorderTraversal(root);
     vector<int> exceptResult = {0,1,3,7,8,4,9,10,2,5,6};
     EXPECT_EQ(result,exceptResult);

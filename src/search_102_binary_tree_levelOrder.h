@@ -112,7 +112,8 @@ TEST(test_problem_102, testcase0)
 {
     Solution_102_single_queue so;
     vector<int> nums = {3, 9, 20, NODE_NULL, NODE_NULL, 15, 7};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<vector<int>> result = so.levelOrder(root);
     vector<vector<int>> exceptResult = {{3},{9,20},{15,7}};
     EXPECT_EQ(result[0],exceptResult[0]);
@@ -124,7 +125,8 @@ TEST(test_problem_102, testcase1)
 {
     Solution_102_single_queue so;
     vector<int> nums = {3, 9, 20, 4, 5, 15, 7};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<vector<int>> result = so.levelOrder(root);
     vector<vector<int>> exceptResult = {{3},{9,20},{4,5,15,7}};
     EXPECT_EQ(result[0],exceptResult[0]);
@@ -136,7 +138,8 @@ TEST(test_problem_102, testcase2)
 {
     Solution_102_single_queue so;
     vector<int> nums = {3, 9, 20, NODE_NULL, 5, 15, 7};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<vector<int>> result = so.levelOrder(root);
     vector<vector<int>> exceptResult = {{3},{9,20},{5,15,7}};
     EXPECT_EQ(result[0],exceptResult[0]);
@@ -148,7 +151,8 @@ TEST(test_problem_102, testcase3)
 {
     Solution_102_single_queue so;
     vector<int> nums = {3, 9, 20, 4, NODE_NULL, 15, 7};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<vector<int>> result = so.levelOrder(root);
     vector<vector<int>> exceptResult = {{3},{9,20},{4,15,7}};
     EXPECT_EQ(result[0],exceptResult[0]);
@@ -160,7 +164,8 @@ TEST(test_problem_102, testcase4)
 {
     Solution_102_single_queue so;
     vector<int> nums = {3, 9, 20, 4, NODE_NULL, 15, 7};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<vector<int>> result = so.levelOrder(root);
     vector<vector<int>> exceptResult = {{3},{9,20},{4,15,7}};
     EXPECT_EQ(result[0],exceptResult[0]);
@@ -172,7 +177,8 @@ TEST(test_problem_102, testcase5)
 {
     Solution_102_single_queue so;
     vector<int> nums = {3};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<vector<int>> result = so.levelOrder(root);
     vector<vector<int>> exceptResult = {{3}};
     EXPECT_EQ(result[0],exceptResult[0]);
@@ -181,8 +187,9 @@ TEST(test_problem_102, testcase5)
 TEST(test_problem_102, testcase6)
 {
     Solution_102_single_queue so;
-    vector<int> nums = {3, NODE_NULL, 20, NODE_NULL, NODE_NULL, 15, 7};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    vector<int> nums = {3, NODE_NULL, 20, 15, 7};
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<vector<int>> result = so.levelOrder(root);
     vector<vector<int>> exceptResult = {{3},{20},{15,7}};
     EXPECT_EQ(result[0],exceptResult[0]);
@@ -194,8 +201,9 @@ TEST(test_problem_102, testcase6)
 TEST(test_problem_102, testcase7)
 {
     Solution_102_single_queue so;
-    vector<int> nums = {3, 9, NODE_NULL, 4, NODE_NULL, NODE_NULL, NODE_NULL, 15, 7};
-    TreeNode* root = LeetcodeCreateTreeByVectorInt(nums);
+    vector<int> nums = {3, 9, NODE_NULL, 4, NODE_NULL, 15, 7};
+    LeetCodeBinaryTree lcTree;
+    TreeNode *root = lcTree.CreateTreeByVectorInt(nums);
     vector<vector<int>> result = so.levelOrder(root);
     vector<vector<int>> exceptResult = {{3},{9},{4},{15,7}};
     EXPECT_EQ(result[0],exceptResult[0]);
