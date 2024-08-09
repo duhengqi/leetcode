@@ -36,130 +36,149 @@
 class Codec {
 public:
 
-    void CodecSplitString(const string& s, vector<int>& v, const string& c)
-    {
-      string::size_type pos1, pos2;
-      pos2 = s.find(c);
-      pos1 = 0;
-      while(string::npos != pos2)
-      {
-        v.push_back(atoi(s.substr(pos1, pos2-pos1).c_str()));
-    
-        pos1 = pos2 + c.size();
-        pos2 = s.find(c, pos1);
-      }
-      if(pos1 != s.length())
-        v.push_back(atoi(s.substr(pos1).c_str()));
-    }
-
-    void CodecRecursion(TreeNode* root, string &res, bool isPreOrder){
+    void CodecLevelOrder(TreeNode* root, string& result) {
         if (root == nullptr) {
             return;
         }
-        if (isPreOrder) {
-            res += to_string(root->val);
-            res += ' ';
-            CodecRecursion(root->left, res, isPreOrder);
-        } else {
-            CodecRecursion(root->left, res, isPreOrder);
-            res += to_string(root->val);
-            res += ' ';
-        }
-        CodecRecursion(root->right, res, isPreOrder);
-    }
-    
-    TreeNode* CodecBuildTree(vector<int>& preorder, vector<int>& inorder)
-    {
-        int preIndex = 0;
-        int inIndex = 0;
-        bool isRightNode = false;
-        map<int, TreeNode*> mapNode;
-        map<int, TreeNode*>::iterator iter;
+        queue<TreeNode*> queL;
+        queL.push(root);
+        result += to_string(root->val);
+        result += " L";
+        int levelIndex;
+        while(!queL.empty()) {
+            string str;
+            levelIndex = queL.size();
+            while(levelIndex) {
+                TreeNode* node = queL.front();
+                queL.pop();
+                if (node->left) {
+                    queL.push(node->left);
+                    str += to_string(node->left->val);
+                    str += " ";
 
-        TreeNode* Root = new TreeNode;
-        Root->val = preorder[0];
-        mapNode[preorder[0]] = Root;
-        TreeNode* curTreeRoot = Root;
-        preIndex++;
-
-        while (inIndex < inorder.size() && preIndex < preorder.size()) {
-            iter = mapNode.find(inorder[inIndex]);
-            if (iter == mapNode.end()) {
-                while (preorder[preIndex] != inorder[inIndex]) {
-                    TreeNode* node = new TreeNode;
-                    node->val = preorder[preIndex];
-                    mapNode[node->val] = node;
-                    if (isRightNode) {
-                        curTreeRoot->right = node;
-                        isRightNode = false;
-                    } else {
-                        curTreeRoot->left = node;
-                    }
-                    curTreeRoot = node;
-                    preIndex++;
-                }
-                TreeNode* node = new TreeNode;
-                node->val = preorder[preIndex];
-                mapNode[node->val] = node;
-                if (isRightNode) {
-                    curTreeRoot->right = node;
-                    isRightNode = false;
                 } else {
-                    curTreeRoot->left = node;
+                    str += "N ";
                 }
-                curTreeRoot = node;
-                preIndex++;
-                inIndex++;
-                if (inIndex < inorder.size() && preIndex < preorder.size() && preorder[preIndex] == preorder[preIndex])
-                {
-                    isRightNode = true;
+                if (node->right) {
+                    queL.push(node->right);
+                    str += to_string(node->right->val);
+                    str += " ";
+                } else {
+                    str += "N ";
                 }
-            } else {
-                curTreeRoot = iter->second;
-                inIndex++;
-                isRightNode = true;
+                levelIndex--;
+            }
+            if (!str.empty()) {
+                result += str;
+                result += "L";
             }
         }
-        return Root;
+        return;
     }
 
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
         string res;
-        CodecRecursion(root, res, true);
-        res += ',';
-        CodecRecursion(root, res, false);
+        CodecLevelOrder(root, res);
         cout << res << endl;
         return res;
     }
 
+    void CodecBuildNode(TreeNode* &node, string &str, string::size_type &start)
+    {
+        if(str[start] == 'N') {
+            node->left = NULL;
+            start += 2;
+        } else {
+            string::size_type posTmp = str.find(" ", start);
+            node->left = new TreeNode;
+            node->left->val = atoi(str.substr(start, posTmp - start).c_str());
+            start = posTmp + 1;
+        }
+
+        if(str[start] == 'N') {
+            node->right = NULL;
+            start += 2;
+        } else {
+            string::size_type posTmp = str.find(" ", start);
+            node->right = new TreeNode;
+            node->right->val = atoi(str.substr(start, posTmp - start).c_str());
+            start = posTmp + 1;
+        }
+    }
+
+    TreeNode* CodecBuildTree(string &str) 
+    {
+        if(str.empty()) {
+            return NULL;
+        }
+        TreeNode* root = new TreeNode;
+        queue<TreeNode*> que;
+        string::size_type start, end;
+        string c = "L";
+        end = str.find(c);
+        cout <<"end pos: "<< end << endl;
+        start = 0;
+        root->val = atoi(str.substr(start, end - start).c_str());
+        cout <<"root->val"<< root->val << endl;
+        start = end + c.size();
+        que.emplace(root);
+        int levelIndex;
+
+        while(!que.empty()) {
+            levelIndex = que.size();
+            end = str.find(c, start);
+            cout <<"end pos: "<< end << endl;
+            while(levelIndex) {
+                TreeNode* node = que.front();
+                que.pop();
+
+                CodecBuildNode(node, str, start);
+                if (start > end) {
+                    cout << "build node error" << endl;
+                    break;
+                }
+
+                if (node->left) {
+                    que.push(node->left);
+                }
+                if (node->right) {
+                    que.push(node->right);
+                }
+                levelIndex--;
+            }
+            start = end + c.size();
+        }
+
+        return root;
+    }
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-        vector<int> preOrder;
-        vector<int> inOrder;
-        int endPos = 0;
-        for (endPos = 0; endPos < data.size();endPos++) {
-            if (data[endPos] == ',') {
-                break;
-            }
-        }
-        string pre(data, 0, endPos-1);
-        string in(data, endPos+1);
-        CodecSplitString(pre, preOrder, " ");
-        CodecSplitString(in, inOrder, " ");
-        for (int i = 0; i < preOrder.size();i++) {
-            cout << preOrder[i] << endl;
-        }
-        for (int i = 0; i < inOrder.size();i++) {
-            cout << inOrder[i] << endl;
-        }
-        return CodecBuildTree(preOrder, inOrder);
+        return CodecBuildTree(data);
     }
+
 };
 
 // Your Codec object will be instantiated and called as such:
 // Codec ser, deser;
 // TreeNode* ans = deser.deserialize(ser.serialize(root));
 // @lc code=end
+
+TEST(test_problem_297, testcase0)
+{
+    Codec so;
+    TreeNode* root = new TreeNode;
+    root->val = 1;
+    root->left = new TreeNode;
+    root->right = new TreeNode;
+    root->left->val = 2;
+    root->right->val = 3;
+    root->right->left = new TreeNode;
+    root->right->right = new TreeNode;
+    root->right->left->val = 4;
+    root->right->right->val = 5;
+    string str = so.serialize(root);
+    cout << str << endl;
+}
 
 #endif /*_LEETCODE_NUMS_297_SERIALIZE_H*/
