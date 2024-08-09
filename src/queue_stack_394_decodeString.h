@@ -1,5 +1,5 @@
-#ifndef _LEETCODE_NUMS_394_DECODESTRING_H
-#define _LEETCODE_NUMS_394_DECODESTRING_H
+#ifndef _LEETCODE_NUMS_394_DECODE_STRING_H
+#define _LEETCODE_NUMS_394_DECODE_STRING_H
 
 #include "god.h"
 /*
@@ -84,4 +84,4 @@ TEST(test_problem_394, testcase0)
 
 // @lc code=end
 
-#endif /*_LEETCODE_NUMS_394_DECODESTRING_H*/
+#endif /*_LEETCODE_NUMS_394_DECODE_STRING_H*/

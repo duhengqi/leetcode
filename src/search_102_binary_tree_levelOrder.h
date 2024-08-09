@@ -1,3 +1,6 @@
+#ifndef _LEETCODE_NUMS_102_LEVEL_ORDER_H
+#define _LEETCODE_NUMS_102_LEVEL_ORDER_H
+
 #include "god.h"
 #include "leetcode_binary_tree.h"
 /*
@@ -211,3 +214,5 @@ TEST(test_problem_102, testcase7)
     EXPECT_EQ(result[2],exceptResult[2]);
     EXPECT_EQ(result[3],exceptResult[3]);
 }
+
+#endif /*_LEETCODE_NUMS_102_LEVEL_ORDER_H*/

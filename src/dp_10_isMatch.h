@@ -36,10 +36,130 @@
 class Solution_10 {
 public:
     bool isMatch(string s, string p) {
+        int sIndex = 0;
+        int pIndex = 0;
+        while (pIndex < p.size() && sIndex < s.size()) {
+            if (p[pIndex] == '.') {
+                sIndex++;
+                pIndex++;
+            } else if(p[pIndex] == '*') {
+                if (p[pIndex-1] == '.') {
+                   string::size_type posTmp = sIndex;
+                    while (posTmp != string::npos) {
+                        posTmp = s.find(p[pIndex+1], sIndex);
+                        if (posTmp == string::npos) {
+                            return false;
+                        }
+                        // cout << s.?substr(posTmp) << " " << p.substr(pIndex + 1) << endl;
+                        if (isMatch(s.substr(posTmp),p.substr(pIndex+1))) {
+                            return true;
+                        }
+                        sIndex = posTmp+1;
+                    } 
+                } else {
+                    string::size_type posTmp = sIndex;
+                    while (posTmp != string::npos) {
+                        posTmp = s.find(p[pIndex+1], sIndex);
+                        if (posTmp == string::npos) {
+                            return false;
+                        }
+                        // cout << s.?substr(posTmp) << " " << p.substr(pIndex + 1) << endl;
+                        if (isMatch(s.substr(posTmp),p.substr(pIndex+1))) {
+                            return true;
+                        }
+                        sIndex = posTmp+1;
+                    }
+                    return false;
+                }
+            } else {
+                if (p[pIndex] == s[sIndex]) {
+                    sIndex++;
+                    pIndex++;
+                } else {
+                    return false;
+                }
+            }
+            if (sIndex == s.size() && pIndex == p.size()) {
+                return true;
+            }
+        }
 
+        return false;
     }
 };
 // @lc code=end
 
+TEST(test_problem_10, testcase0)
+{
+    Solution_10 so;
+    string s = "aa";
+    string p = "a";
+    bool result = so.isMatch(s, p);
+    EXPECT_EQ(result, false);
+}
+
+TEST(test_problem_10, testcase1)
+{
+    Solution_10 so;
+    string s = "aa";
+    string p = "a*";
+    bool result = so.isMatch(s, p);
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_10, testcase2)
+{
+    Solution_10 so;
+    string s = "aa";
+    string p = ".*";
+    bool result = so.isMatch(s, p);
+    EXPECT_EQ(result, true);
+}
+
+
+TEST(test_problem_10, testcase3)
+{
+    Solution_10 so;
+    string s = "aa";
+    string p = ".*b";
+    bool result = so.isMatch(s, p);
+    EXPECT_EQ(result, false);;
+}
+
+TEST(test_problem_10, testcase4)
+{
+    Solution_10 so;
+    string s = "aabcdseds";
+    string p = "aa.cd*e*s";
+    bool result = so.isMatch(s, p);
+    EXPECT_EQ(result, true);;
+}
+
+TEST(test_problem_10, testcase5)
+{
+    Solution_10 so;
+    string s = "aabcdseds";
+    string p = "a*.";
+    bool result = so.isMatch(s, p);
+    EXPECT_EQ(result, true);;
+}
+
+TEST(test_problem_10, testcase6)
+{
+    Solution_10 so;
+    string s = "a";
+    string p = "*.";
+    bool result = so.isMatch(s, p);
+    EXPECT_EQ(result, false);;
+}
+
+TEST(test_problem_10, testcase7)
+{
+    Solution_10 so;
+    string s = "aasdfasdf";
+    string p = "*.df";
+    bool result = so.isMatch(s, p);
+    EXPECT_EQ(result, true);;
+}
 
 #endif /*_LEETCODE_NUMS_10_IS_MATCH_H_*/
