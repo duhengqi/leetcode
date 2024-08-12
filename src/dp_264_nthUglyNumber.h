@@ -2,7 +2,7 @@
 #define _LEETCODE_NUMS_264_NTH_UGLY_NUMBER_H_
 
 #include "god.h"
-
+#include "cmath"
 /*
  * @lc app=leetcode.cn id=264 lang=cpp
  *
@@ -27,19 +27,36 @@ class Solution_264 {
 public:
     int nthUglyNumber(int n)
     {
-        queue<int> que;
-        set<int> res;
-        que.push(2);
-        que.push(3);
-        que.push(5);
-        while(res.size() < 2*n) {
-            int tmp = que.front();
-            que.pop();
-            res.emplace(tmp * 2);
-            res.emplace(tmp * 3);
-            res.emplace(tmp * 5);
+        queue<long> single;
+        int m = 2;
+        int twoIndex = 2;
+        vector<long> uglys = {1, 2, 3, 4, 5};
+        single.push(3);
+        single.push(5);
+        while (uglys.size() < n) {
+            long fiveNum = pow(5, m);
+            if (2*uglys[twoIndex] < 3*single.front()) {
+                if (2*uglys[twoIndex] < fiveNum) {
+                    uglys.push_back(2*uglys[twoIndex]);
+                    twoIndex++;
+                } else {
+                    single.push(fiveNum);
+                    uglys.push_back(fiveNum);
+                    m++;
+                }
+            } else {
+                if (3*single.front() < fiveNum) {
+                    single.push(3*single.front());
+                    uglys.push_back(3*single.front());
+                    single.pop();
+                } else {
+                    single.push(fiveNum);
+                    uglys.push_back(fiveNum);
+                    m++;
+                }
+            }
         }
-        
+        return uglys[n-1];
     }
 };
 
@@ -48,7 +65,7 @@ public:
 TEST(test_problem_264, testcase0)
 {
     Solution_264 so;
-    EXPECT_EQ(so.nthUglyNumber(1352), 12);
+    EXPECT_EQ(so.nthUglyNumber(10), 12);
     return;
 }
 
