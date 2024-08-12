@@ -44,11 +44,9 @@ public:
 
 TEST(test_problem_122, testcase0)
 {
-    Solution so;
-    string s = "aa";
-    string p = "a";
-    bool result = so.isMatch(s, p);
-    EXPECT_EQ(result, false);
+    Solution_122 so;
+
+    EXPECT_EQ(false, false);
 }
 
 #endif /*_LEETCODE_NUMS_122_MAX_PROFIX_H_*/

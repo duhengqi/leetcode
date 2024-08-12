@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class test_stl_array {
+class TestCPPString {
 public:
     void SplitString(const string& s, vector<string>& v, const string& c)
     {
@@ -21,7 +21,14 @@ public:
             v.push_back(s.substr(pos1));
         }
     }
-
+    void string_convert_int()
+    {
+        int nums = 12345;
+        string str = to_string(nums);
+        cout << str << endl;
+        int nums1 = atoi(str.c_str());
+        cout << nums1 << endl;
+    }
     void test_cpp_string()
     {
         string str1 = "test1";
