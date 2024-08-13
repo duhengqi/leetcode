@@ -2,7 +2,7 @@
 #define _LEETCODE_NUMS_400_FIND_NTH_DIGIT_H
 
 #include "god.h"
-
+#include "cmath"
 /*
  * @lc app=leetcode.cn id=400 lang=cpp
  *
@@ -24,12 +24,52 @@
 class Solution_400 {
 public:
     int findNthDigit(int n) {
+        if (n < 10) {
+            return n;
+        }
+        long num = 9;
+        int dig = 1;
 
+        while (n >= num*dig) {
+            n -= num * dig;
+            num *= 10;
+            dig += 1;
+        }
+
+        if (n == 0) {
+            return 9;
+        }
+
+        int start = pow(10, dig-1) + (n-1)/dig;
+        int result = to_string(start)[(n-1) % dig] - '0';
+
+        return result;
     }
 };
 // @lc code=end
 
+TEST(test_problem_400, testcase0)
+{
+    Solution_400 so;
+    EXPECT_EQ(so.findNthDigit(11), 0);
+}
 
+TEST(test_problem_400, testcase1)
+{
+    Solution_400 so;
+    EXPECT_EQ(so.findNthDigit(10), 1);
+}
 
+TEST(test_problem_400, testcase2)
+{
+    Solution_400 so;
+    EXPECT_EQ(so.findNthDigit(189), 9);
+}
+
+TEST(test_problem_400, testcase3)
+{
+    Solution_400 so;
+    EXPECT_EQ(so.findNthDigit(191), 0);
+}
 
 #endif /*_LEETCODE_NUMS_400_FIND_NTH_DIGIT_H*/

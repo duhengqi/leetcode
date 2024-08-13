@@ -27,9 +27,38 @@
 class Solution_169 {
 public:
     int majorityElement(vector<int>& nums) {
-
+        unordered_map<int,int> map;
+        int max = 0;
+        int result;
+        int len = nums.size();
+        for (int i = 0; i < len; i++) {
+            map[nums[i]]++;
+            if (map[nums[i]] > max) {
+                result = nums[i];
+                max = map[nums[i]];
+            }
+            if (max > len/2) {
+                return result;
+            }
+        }
+        return result;
     }
 };
 // @lc code=end
+
+
+TEST(test_problem_169, testcase0)
+{
+    Solution_169 so;
+    vector<int> nums = {2, 2, 1};
+    EXPECT_EQ(so.majorityElement(nums), 2);
+}
+
+TEST(test_problem_169, testcase1)
+{
+    Solution_169 so;
+    vector<int> nums = {2, 2, 3, 3, 2};
+    EXPECT_EQ(so.majorityElement(nums), 2);
+}
 
 #endif /*_LEETCODE_NUMS_169_MAJORITY_ELEMENT_H*/

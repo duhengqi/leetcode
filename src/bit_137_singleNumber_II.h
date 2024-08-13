@@ -18,8 +18,8 @@
  * 输入：nums = [0,1,0,1,0,1,99] 输出：99
  * 
  * 提示：
- * 1 <= nums.length <= 3 * 104
- * -231 <= nums[i] <= 231 - 1
+ * 1 <= nums.length <= 3 * 10^4
+ * -2^31 <= nums[i] <= 2^31 - 1
  * nums 中，除某个元素仅出现 一次 外，其余每个元素都恰出现 三次
  */
 
@@ -27,7 +27,16 @@
 class Solution_137 {
 public:
     int singleNumber(vector<int>& nums) {
-
+        map<int, int> mapNums;
+        for (int i = 0; i < nums.size();i++) {
+            mapNums[nums[i]]++;
+        }
+        for (auto iter = mapNums.begin(); iter != mapNums.end();iter++) {
+            if (iter->second == 1) {
+                return iter->first;
+            }
+        }
+        return 0;
     }
 };
 // @lc code=end

@@ -27,9 +27,35 @@
 class Solution_238 {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
+        int len = nums.size();
+        vector<int> result(nums.size());
+        result[len - 1] = 1;
+        result[len - 2] = nums[len - 1];
+        for (int i = len - 3; i >= 0; i --) {
+            result[i] = result[i + 1] * nums[i+1];
+        }
+        for (int i = 0; i < result.size(); i++) {
+            cout << result[i] << " ";
+        }
+        cout << endl;
+        int preSum = nums[0];
+        for (int i = 1; i < len; i++) {
+            result[i] *= preSum;
+            preSum *= nums[i];
+        }
 
+        return result;
     }
 };
 // @lc code=end
+
+TEST(test_problem_238, testcase0)
+{
+    Solution_238 so;
+    vector<int> nums = {1,2,3,4};
+    vector<int> exceptResult = {24,12,8,6};
+    vector<int> result = so.productExceptSelf(nums);
+    EXPECT_EQ(is_vector_equal(result, exceptResult), true);
+}
 
 #endif /*_LEETCODE_NUMS_238_PRODUCT_EXCEPT_SELF_H*/
