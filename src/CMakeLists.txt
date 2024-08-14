@@ -1,5 +1,6 @@
 #设置包含的目录
 include_directories(
+    ${PROJECT_SOURCE_DIR}/include/Krahets_88_numbers
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/include/gtest
     ${PROJECT_SOURCE_DIR}/include/test_cpp_algorithm
