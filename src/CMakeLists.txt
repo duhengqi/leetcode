@@ -11,7 +11,7 @@ include_directories(
 #设置链接库搜索目录
 if(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux")
     link_directories(
-        ${PROJECT_SOURCE_DIR}/lib
+        ${PROJECT_SOURCE_DIR}/lib/linux_v1.10.x
     )
 elseif (CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
     link_directories(
@@ -30,9 +30,18 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #target_link_libraries里库文件的顺序符合gcc链接顺序的规则，即被依赖的库放在依赖它的库的后面
 
-link_libraries(gtestd)
 add_executable(${PROJECT_NAME} ${LEETCODE_SRC}) #生成可执行文件
-target_link_libraries(
-    ${PROJECT_NAME}
-    gtestd
-)
+
+if(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux")
+    target_link_libraries(
+        ${PROJECT_NAME}
+        gtest
+        pthread
+    )
+elseif (CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
+    target_link_libraries(
+        ${PROJECT_NAME}
+        gtestd
+        pthread
+    )
+endif()
