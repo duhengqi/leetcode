@@ -10,7 +10,7 @@
 #include <string>
 #include "gtest.h"
 #include "test_stl_multimap.h"
-#include "test_cpp_maths_bit.h"
+#include "dp_P1028_calculate_number.h"
 #include "dp_10_isMatch.h"
 
 using namespace std;
@@ -20,8 +20,8 @@ int run_all_test(int* argc, char** argv)
     testing::InitGoogleTest(argc,argv);
     ::testing::InitGoogleTest(argc, argv);
     /* 测试指定用例 不执行用例可以加上DISABLE_ */
-    // ::testing::GTEST_FLAG(filter) = "test_problem_10.*";
-    ::testing::GTEST_FLAG(filter) = "TestSuit_MathsBit.PrintBit";
+    ::testing::GTEST_FLAG(filter) = "test_luogu_P1028.*";
+    // ::testing::GTEST_FLAG(filter) = "TestSuit_MathsBit.PrintBit";
     // ::testing::GTEST_FLAG(filter) = "test_sort_quick_sort.testcase5";
     /* 重复执行用例，可以上面的filter参数同时使用 */
     ::testing::GTEST_FLAG(repeat) = 1;

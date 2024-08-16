@@ -35,7 +35,9 @@ public:
     {
         int num = 3;
         char buf[256] = {0};
-        cout << _itoa(num, buf, 2) << endl;
+        #ifdef _WIN64
+            cout << _itoa(num, buf, 2) << endl;
+        #endif
     }
 };
 
