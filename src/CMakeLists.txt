@@ -9,9 +9,15 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/include/leetcode_data_structure
 )
 #设置链接库搜索目录
-link_directories(
-    ${PROJECT_SOURCE_DIR}/lib
-)
+if(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux")
+    link_directories(
+        ${PROJECT_SOURCE_DIR}/lib
+    )
+elseif (CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
+    link_directories(
+        ${PROJECT_SOURCE_DIR}/lib/win_v1.10.x
+    )
+endif()
 #发现一个目录下所有的源代码文件并将列表存储在一个变量中。
 aux_source_directory(${PROJECT_SOURCE_DIR}/src LEETCODE_SRC)
 
@@ -24,9 +30,9 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #target_link_libraries里库文件的顺序符合gcc链接顺序的规则，即被依赖的库放在依赖它的库的后面
 
-link_libraries(gtest)
+link_libraries(gtestd)
 add_executable(${PROJECT_NAME} ${LEETCODE_SRC}) #生成可执行文件
 target_link_libraries(
     ${PROJECT_NAME}
-    gtest
+    gtestd
 )
