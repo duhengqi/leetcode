@@ -23,7 +23,7 @@ endif()
 aux_source_directory(${PROJECT_SOURCE_DIR}/src LEETCODE_SRC)
 
 # 参数之间用空格分隔
-add_definitions("-Wall -g")
+add_definitions("-Wall -g -O0")
 
 #重新定义目标二进制可执行文件的存放位置
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
