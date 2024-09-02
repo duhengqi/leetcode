@@ -33,9 +33,34 @@
 class Solution_240 {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        
+        int i = 0;
+        int j = matrix[0].size()-1;
+        while (i < matrix.size()&&j>=0){
+            if (matrix[i][j] == target) {
+                return true;
+            }
+            if (matrix[i][j] < target) {
+                i++;
+                continue;
+            } else {
+                j--;
+            }
+        }
+        return false;
     }
 };
 // @lc code=end
 
 #endif /*_LEETCODE_NUMS_240_SEARCH_MATRIX_H_*/
+
+
+TEST(test_problem_240, testcase0)
+{
+    Solution_240 so;
+    vector<vector<int>> matrix = {{-5}};
+
+    bool result = so.searchMatrix(matrix,-10);
+
+    EXPECT_EQ(result, false);
+}
+

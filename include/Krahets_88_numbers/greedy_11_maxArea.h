@@ -31,9 +31,58 @@
 class Solution_11 {
 public:
     int maxArea(vector<int>& height) {
+        int front = 0;
+        int back = height.size() - 1;
+        int result = 0;
+        while (front < back) {
+            int area = (back - front) * min(height[back], height[front]);
+            if (area > result) {
+                result = area;
+            }
+            if (height[front] < height[back]) {
+                while (front < back) {
+                    if (height[front+1] > height[front]) {
+                        front++;
+                        break;
+                    }
+                    front++;
+                }
+            } else {
+                while (front < back) {
+                    if (height[back-1] > height[back]) {
+                        back--;
+                        break;
+                    }
+                    back--;
+                }
+            }
+            
+        }
 
+        return result;
     }
 };
 // @lc code=end
+
+
+TEST(test_problem_11, testcase0)
+{
+    Solution_11 so;
+    vector<int> height = {1,8,6,2,5,4,8,3,7};
+
+    int result = so.maxArea(height);
+
+    EXPECT_EQ(result, 49);
+}
+
+TEST(test_problem_11, testcase1)
+{
+    Solution_11 so;
+    vector<int> height = {1,1};
+
+    int result = so.maxArea(height);
+
+    EXPECT_EQ(result, 1);
+}
 
 #endif /*_LEETCODE_NUMS_11_MAX_AREA_H_*/

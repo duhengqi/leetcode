@@ -37,9 +37,28 @@
 class Solution_89 {
 public:
     vector<int> grayCode(int n) {
-
+        if(n < 1) {
+            return {};
+        }
+        vector<int> result(1<<n);
+        result[0] = 0;
+        result[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            for (int j = 0; j < 1<<(i-1);j++) {
+                result[(1 << i) -1 - j] = (result[j] | (1 << (i - 1)));
+            }
+        }
+        return result;
     }
 };
 // @lc code=end
 
 #endif /*_LEETCODE_NUMS_89_GRAY_CODDE_H*/
+
+TEST(test_problem_89, testcase0)
+{
+    Solution_89 so;
+    vector<int> result = so.grayCode(2);
+    vector<int> expectedResult = {0, 1, 3, 2};
+    EXPECT_EQ(is_vector_equal(result,expectedResult), true);
+}

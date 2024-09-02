@@ -37,7 +37,13 @@
 class Solution_122 {
 public:
     int maxProfit(vector<int>& prices) {
-
+        int result = 0;
+        for (int i = 1; i < prices.size();i++) {
+            if (prices[i]>prices[i-1]) {
+                result += prices[i] - prices[i - 1];
+            }
+        }
+        return result;
     }
 };
 // @lc code=end
@@ -45,8 +51,8 @@ public:
 TEST(test_problem_122, testcase0)
 {
     Solution_122 so;
-
-    EXPECT_EQ(false, false);
+    vector<int> prices = {7, 1, 5, 3, 6, 4};
+    EXPECT_EQ(so.maxProfit(prices), 7);
 }
 
 #endif /*_LEETCODE_NUMS_122_MAX_PROFIX_H_*/
