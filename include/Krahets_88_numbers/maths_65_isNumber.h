@@ -40,10 +40,195 @@
 class Solution_65 {
 public:
     bool isNumber(string s) {
+        bool has_pos_neg = false;
+        bool has_pos_neg_after_e = false;
+        bool has_e = false;
+        bool has_dot = false;
+        bool has_number = false;
+        bool has_number_after_dot = false;
+        bool has_number_after_e = false;
 
+        for (int i = 0; i < s.size();i++) {
+            if (s[i] == '+' || s[i] == '-') {
+                if (i != 0 && s[i-1] != 'e'&& s[i-1] != 'E') {
+                    return false;
+                }
+            } else if (s[i] == '.') {
+                if (has_e || has_dot) {
+                    return false;
+                }
+                has_dot = true;
+            } else if (s[i] == 'e' || s[i] == 'E') {
+                if (has_e || has_number == false) {
+                    return false;
+                }
+                has_e = true;
+            } else if (s[i] >= '0' && s[i] <= '9') {
+                if (has_e) {
+                    has_number_after_e = true;
+                } else{
+                    has_number = true;
+                }
+            } else {
+                return false;
+            }
+        }
+        if (!has_number) {
+            return false;
+        } else if (has_e && !has_number_after_e) {
+            return false;
+        }
+
+        return true;
     }
 };
 // @lc code=end
 
+TEST(test_problem_65, testcase0)
+{
+    Solution_65 so;
+    bool result = so.isNumber("2");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase1)
+{
+    Solution_65 so;
+    bool result = so.isNumber("0089");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase2)
+{
+    Solution_65 so;
+    bool result = so.isNumber("-0.1");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase3)
+{
+    Solution_65 so;
+    bool result = so.isNumber("+3.14");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase4)
+{
+    Solution_65 so;
+    bool result = so.isNumber("4.");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase5)
+{
+    Solution_65 so;
+    bool result = so.isNumber("-.9");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase6)
+{
+    Solution_65 so;
+    bool result = so.isNumber("2e10");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase7)
+{
+    Solution_65 so;
+    bool result = so.isNumber("-90E3");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase8)
+{
+    Solution_65 so;
+    bool result = so.isNumber("3e+7");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase9)
+{
+    Solution_65 so;
+    bool result = so.isNumber("+3.14");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase10)
+{
+    Solution_65 so;
+    bool result = so.isNumber("+6e-1");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase11)
+{
+    Solution_65 so;
+    bool result = so.isNumber("-53.5e93");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase12)
+{
+    Solution_65 so;
+    bool result = so.isNumber("-123.456e789");
+    EXPECT_EQ(result, true);
+}
+
+TEST(test_problem_65, testcase13)
+{
+    Solution_65 so;
+    bool result = so.isNumber("abc");
+    EXPECT_EQ(result, false);
+}
+
+TEST(test_problem_65, testcase14)
+{
+    Solution_65 so;
+    bool result = so.isNumber("1a");
+    EXPECT_EQ(result, false);
+}
+
+TEST(test_problem_65, testcase15)
+{
+    Solution_65 so;
+    bool result = so.isNumber("1e");
+    EXPECT_EQ(result, false);
+}
+
+TEST(test_problem_65, testcase16)
+{
+    Solution_65 so;
+    bool result = so.isNumber("e3");
+    EXPECT_EQ(result, false);
+}
+
+TEST(test_problem_65, testcase17)
+{
+    Solution_65 so;
+    bool result = so.isNumber("99e2.5");
+    EXPECT_EQ(result, false);
+}
+
+TEST(test_problem_65, testcase18)
+{
+    Solution_65 so;
+    bool result = so.isNumber("--6");
+    EXPECT_EQ(result, false);
+}
+
+TEST(test_problem_65, testcase19)
+{
+    Solution_65 so;
+    bool result = so.isNumber("-+3");
+    EXPECT_EQ(result, false);
+}
+
+TEST(test_problem_65, testcase20)
+{
+    Solution_65 so;
+    bool result = so.isNumber("95a54e53");
+    EXPECT_EQ(result, false);
+}
 
 #endif /*_LEETCODE_NUMS_65_IS_NUMBER_H*/
