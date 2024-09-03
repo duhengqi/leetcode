@@ -33,10 +33,78 @@
 // @lc code=start
 class Solution_135 {
 public:
+   void setCandy(vector<int>& candy, int start, int end, bool flag) {
+        if (flag) {
+            for (int i = start + 1; i <= end;i++) {
+                if (candy[i] <= candy[i - 1]) {
+                    candy[i] = candy[i - 1] + 1;
+                }
+            }
+        } else {
+            for (int i = end-1; i >= start; i--) {
+                if (candy[i] <= candy[i + 1]) {
+                    candy[i] = candy[i + 1] + 1;
+                }
+            }
+        }
+   }
     int candy(vector<int>& ratings) {
-
+        vector<int> candy(ratings.size(),1);
+        int index = 0;
+        int result = 0;
+        while(index+1 < candy.size()) {
+            int end = index;
+            if (ratings[index] > ratings[index+1]) {
+                for (end = index; end+1 < ratings.size(); end++) {
+                    if (ratings[end] <= ratings[end+1]) {
+                        break;
+                    }
+                }
+                setCandy(candy, index, end, false);
+                index = end;
+            } else if(ratings[index] < ratings[index+1]) {
+                for (end = index; end+1 < ratings.size(); end++) {
+                    if (ratings[end] >= ratings[end+1]) {
+                        break;
+                    }
+                }
+                setCandy(candy, index, end, true);
+                index = end;
+            } else {
+                index++;
+            }
+        }
+        for (int i = 0; i < candy.size(); i++) {
+            result += candy[i];
+        }
+        return result;
     }
+
 };
 // @lc code=end
+
+TEST(test_problem_135, testcase0)
+{
+    Solution_135 so;
+    vector<int> ratings = {1,0,2};
+    int result = so.candy(ratings);
+    EXPECT_EQ(result, 5);;
+}
+
+TEST(test_problem_135, testcase1)
+{
+    Solution_135 so;
+    vector<int> ratings = {1,2,2};
+    int result = so.candy(ratings);
+    EXPECT_EQ(result, 4);;
+}
+
+TEST(test_problem_135, testcase2)
+{
+    Solution_135 so;
+    vector<int> ratings = {1,6,10,8,7,3,2};
+    int result = so.candy(ratings);
+    EXPECT_EQ(result, 18);
+}
 
 #endif /*_LEETCODE_NUMS_135_CANDY_H_*/

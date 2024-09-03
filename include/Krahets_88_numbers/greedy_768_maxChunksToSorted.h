@@ -32,9 +32,78 @@
 class Solution_768 {
 public:
     int maxChunksToSorted(vector<int>& arr) {
+        vector<int> order(arr);
+        sort(order.begin(), order.end());
+        int oIndex = 0;
+        int aIndex = 0;
+        int result = 0;
+        bool flag = false;
+        while (oIndex < order.size()) {
+            for (int i = aIndex; i < arr.size();i++) {
+                    flag = true;
+                    vector<int> tmp(begin(arr) + aIndex, begin(arr)+i+1);
+                    sort(tmp.begin(), tmp.end());
+                    for (int j = 0; j < tmp.size();j++) {
+                        if (tmp[j] != order[oIndex+j]) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) {
+                        result++;
+                        aIndex = i+1;
+                        oIndex = i + 1;
+                        break;
+                    } else {
+                        continue;
+                    }
+            }
+        }
 
+        return result;
     }
 };
 // @lc code=end
 
+TEST(test_problem_768, testcase000)
+{
+    Solution_768 so;
+    vector<int> arr = {0, 3, 0, 3, 2};
+    int result = so.maxChunksToSorted(arr);
+    EXPECT_EQ(result, 2);
+}
+
+TEST(test_problem_768, testcase00)
+{
+    Solution_768 so;
+    vector<int> arr = {1,1,0,0,1};
+    int result = so.maxChunksToSorted(arr);
+    EXPECT_EQ(result, 2);
+}
+
+TEST(test_problem_768, testcase0)
+{
+    Solution_768 so;
+    vector<int> arr = {1,2,3,4,5};
+    int result = so.maxChunksToSorted(arr);
+    EXPECT_EQ(result, 5);
+}
+
+TEST(test_problem_768, testcase1)
+{
+    Solution_768 so;
+    vector<int> arr = {5,4,3,2,1};
+    int result = so.maxChunksToSorted(arr);
+    EXPECT_EQ(result, 1);
+}
+
+TEST(test_problem_768, testcase2)
+{
+    Solution_768 so;
+    vector<int> arr = {2,1,3,4,4};
+    int result = so.maxChunksToSorted(arr);
+    EXPECT_EQ(result, 4);
+}
+
 #endif /*_LEETCODE_NUMS_768_MAX_CHUNKS_TO_SORTED_H_*/
+
